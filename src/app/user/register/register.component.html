@@ -1,0 +1,50 @@
+<div class="subscribe-form">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h1>Register Form</h1>
+                    <div class="line-dec"></div>
+                </div>
+            </div>
+            <div class="col-md-8 offset-md-2">
+                <div class="main-content">
+                    <div class="container">
+                        <form id="subscribe" action="" method="get">
+                            <div class="loginForm">
+                                <div class="col-md-7">
+                                    <input name="firstName" type="text" class="form-control" id="firstName"
+                                        onfocus="if(this.value == 'First Name...') { this.value = ''; }"
+                                        onBlur="if(this.value == '') { this.value = 'First Name...';}"
+                                        value="First Name..." required="">
+                                    <input name="lastName" type="text" class="form-control" id="lastName"
+                                        onfocus="if(this.value == 'Last Name...') { this.value = ''; }"
+                                        onBlur="if(this.value == '') { this.value = 'Last Name...';}"
+                                        value="Last Name..." required="">
+                                    <input name="email" type="text" class="form-control" id="email"
+                                        onfocus="if(this.value == 'Your Email...') { this.value = ''; }"
+                                        onBlur="if(this.value == '') { this.value = 'Your Email...';}"
+                                        value="Your Email..." required="">
+                                    <input name="password" type="text" class="form-control" id="password"
+                                        onfocus="if(this.value == 'Password...') { this.value = ''; }"
+                                        onBlur="if(this.value == '') { this.value = 'Password...';}" value="Password..."
+                                        required="">
+                                    <input name="rePassword" type="text" class="form-control" id="rePassword"
+                                        onfocus="if(this.value == 'Repeat Password...') { this.value = ''; }"
+                                        onBlur="if(this.value == '') { this.value = 'Repeat Password...';}"
+                                        value="Repeat Password..." required="">
+                                </div>
+                                <div class="col-md-5">
+                                    <fieldset>
+                                        <button type="submit" id="form-submit" class="button">Register</button>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <h6>Already have an account? <a routerLink="/login">Login here!</a></h6>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

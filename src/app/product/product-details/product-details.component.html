@@ -1,0 +1,40 @@
+<div class="single-product">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <div class="line-dec"></div>
+                    <h1>Product Details</h1>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="product-slider">
+                    <div id="slider" class="flexslider">
+                        <img src="{{product!.image}}" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="right-content">
+                    <h4>{{product!.productName}}</h4>
+                    <h6>${{product!.price}}</h6>
+                    <p>{{product!.description}}</p>
+                    <span>{{product!.quantity}} left on stock</span>
+                    <form action="" method="get">
+                        <label for="quantity">Quantity:</label>
+                        <input name="quantity" type="quantity" class="quantity-text" id="quantity"
+                            onfocus="if(this.value == '1') { this.value = ''; }"
+                            onBlur="if(this.value == '') { this.value = '1';}" value="1">
+                        <input type="submit" class="button" value="Order Now!">
+                    </form>
+                    <div class="down-content">
+                        <div class="categories">
+                            <h6>Category: <span><a href="#">{{product!.category}}</a></span></h6>
+                        </div>
+                    </div>
+                    <button class="button" routerLink="/products">Back to products</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

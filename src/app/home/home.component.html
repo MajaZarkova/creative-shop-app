@@ -1,0 +1,42 @@
+<div class="banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="caption">
+                    <h2>Creative Shop</h2>
+                    <div class="line-dec"></div>
+                    <p>Choose your favorite design and order your t-shirt
+                        <br><br>Please tell your friends about this awesome website.
+                    </p>
+                    <div class="main-button">
+                        <a routerLink="/products">Order Now!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="featured-items">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <div class="line-dec"></div>
+                    <h1>Featured Items</h1>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="owl-carousel owl-theme">
+                    <a *ngFor="let product of recentProducts" routerLink="/products/{{product._id}}">
+                        <div class="featured-item">
+                            <img src="{{product.image}}" alt="Item 1">
+                            <h4>{{product.productName}}</h4>
+                            <h6>${{product.price}}</h6>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
