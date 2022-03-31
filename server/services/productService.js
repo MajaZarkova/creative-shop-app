@@ -35,6 +35,7 @@ async function getOneProduct(id) {
 
 async function editProduct(id, data) {
     const product = await Product.findByIdAndUpdate(id, data, { runValidators: true });
+    return product
 }
 
 async function deleteProduct(id) {

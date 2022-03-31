@@ -86,3 +86,10 @@ button {
     margin-left: 23%;
     position: relative;
 }
+
+p.error {
+    border-radius: 0.3em;
+	background-color: tomato;
+    padding-top: 0;
+	padding-bottom: 4px;
+}

@@ -1,16 +1,18 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IProduct } from 'src/app/shared/interfaces/product';
 import { ProductsService } from '../products.service';
 
 @Component({
-  selector: 'app-product-details',
-  templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.css']
+  selector: 'app-edit-product',
+  templateUrl: './edit-product.component.html',
+  styleUrls: ['./edit-product.component.css']
 })
-export class ProductDetailsComponent {
+export class EditProductComponent {
 
   product: IProduct | undefined;
+  private id = this.activatedRoute.snapshot.params['productId'];
 
   constructor(private productsService: ProductsService,
     private activatedRoute: ActivatedRoute, private router: Router) {
@@ -19,14 +21,13 @@ export class ProductDetailsComponent {
 
   fetchOneProduct(): void {
     this.product = undefined;
-    const id = this.activatedRoute.snapshot.params['productId'];
-    this.productsService.loadOneProduct(id).subscribe(product => this.product = product);
+    this.productsService.loadOneProduct(this.id).subscribe(product => this.product = product);
   }
 
-  removeProduct(id: string): void {
-    this.productsService.removeProduct(id).subscribe({
+  editProduct(form: NgForm): void {
+    this.productsService.editProduct(this.id, form.value).subscribe({
       next: (product) => {
-        this.router.navigate(['/products']);
+        this.router.navigate([`/products/${this.id}`]);
       },
       error: (err) => {
         console.log(err);

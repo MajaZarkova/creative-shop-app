@@ -10,17 +10,31 @@
             <div class="col-md-8 offset-md-2">
                 <div class="main-content">
                     <div class="container">
-                        <form id="subscribe" action="" method="get">
+                        <form #form="ngForm" id="subscribe" action="" method="get" (submit)="loginUser(form)">
                             <div class="loginForm">
                                 <div class="col-md-7">
+                                    <label for="email">Email</label>
                                     <input name="email" type="text" class="form-control" id="email"
-                                        onfocus="if(this.value == 'Your Email...') { this.value = ''; }"
-                                        onBlur="if(this.value == '') { this.value = 'Your Email...';}"
-                                        value="Your Email..." required="">
-                                    <input name="password" type="text" class="form-control" id="password"
-                                        onfocus="if(this.value == 'Password...') { this.value = ''; }"
-                                        onBlur="if(this.value == '') { this.value = 'Password...';}" value="Password..."
-                                        required="">
+                                        placeholder="example@example.com" ngModel #email="ngModel" required email>
+
+                                    <ng-container *ngIf="email.touched" && email.invalid>
+                                        <p *ngIf="email.errors?.['required']" class="error">
+                                            Email is required!
+                                        </p>
+                                        <p *ngIf="email.errors?.['email']" class="error">
+                                            Email is not valid!
+                                        </p>
+                                    </ng-container>
+
+                                    <label for="password">Password</label>
+                                    <input name="password" type="password" class="form-control" id="password"
+                                        placeholder="*******" ngModel #password="ngModel" required>
+
+                                    <ng-container *ngIf="password.touched" && password.invalid>
+                                        <p *ngIf="password.errors?.['required']" class="error">
+                                            Password is required!
+                                        </p>
+                                    </ng-container>
                                 </div>
                                 <div class="col-md-5">
                                     <fieldset>

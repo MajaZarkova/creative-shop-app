@@ -22,10 +22,10 @@ import { ProductsService } from './product/products.service';
     BrowserModule,
     RouterModule,
     HttpClientModule,
-    AppRoutingModule,
     CoreModule,
     ProductModule,
-    UserModule
+    UserModule,
+    AppRoutingModule
   ],
   providers: [
     ProductsService

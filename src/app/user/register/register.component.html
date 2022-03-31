@@ -10,33 +10,83 @@
             <div class="col-md-8 offset-md-2">
                 <div class="main-content">
                     <div class="container">
-                        <form id="subscribe" action="" method="get">
+                        <form #form="ngForm" id="subscribe" action="" method="get" (ngSubmit)="registerUser(form)">
                             <div class="loginForm">
                                 <div class="col-md-7">
+                                    <label for="firstName">First Name</label>
                                     <input name="firstName" type="text" class="form-control" id="firstName"
-                                        onfocus="if(this.value == 'First Name...') { this.value = ''; }"
-                                        onBlur="if(this.value == '') { this.value = 'First Name...';}"
-                                        value="First Name..." required="">
+                                        placeholder="First Name..." #firstName="ngModel" ngModel required minlength="3">
+
+                                    <ng-container *ngIf="firstName.touched" && firstName.invalid>
+                                        <p *ngIf="firstName.errors?.['required']" class="error">
+                                            First Name is required!
+                                        </p>
+                                        <p *ngIf="firstName.errors?.['minlength']" class="error">
+                                            First Name must be at least 3 characters!
+                                        </p>
+                                    </ng-container>
+
+                                    <label for="lastName">Last Name</label>
                                     <input name="lastName" type="text" class="form-control" id="lastName"
-                                        onfocus="if(this.value == 'Last Name...') { this.value = ''; }"
-                                        onBlur="if(this.value == '') { this.value = 'Last Name...';}"
-                                        value="Last Name..." required="">
+                                        placeholder="Last Name..." #lastName="ngModel" ngModel required minlength="4">
+
+                                    <ng-container *ngIf="lastName.touched" && lastName.invalid>
+                                        <p *ngIf="lastName.errors?.['required']" class="error">
+                                            Last Name is required!
+                                        </p>
+                                        <p *ngIf="lastName.errors?.['minlength']" class="error">
+                                            Last Name must be at least 4 characters!
+                                        </p>
+                                    </ng-container>
+
+                                    <label for="email">Email</label>
                                     <input name="email" type="text" class="form-control" id="email"
-                                        onfocus="if(this.value == 'Your Email...') { this.value = ''; }"
-                                        onBlur="if(this.value == '') { this.value = 'Your Email...';}"
-                                        value="Your Email..." required="">
-                                    <input name="password" type="text" class="form-control" id="password"
-                                        onfocus="if(this.value == 'Password...') { this.value = ''; }"
-                                        onBlur="if(this.value == '') { this.value = 'Password...';}" value="Password..."
-                                        required="">
-                                    <input name="rePassword" type="text" class="form-control" id="rePassword"
-                                        onfocus="if(this.value == 'Repeat Password...') { this.value = ''; }"
-                                        onBlur="if(this.value == '') { this.value = 'Repeat Password...';}"
-                                        value="Repeat Password..." required="">
+                                        placeholder="example@example.com" #email="ngModel" ngModel required email>
+
+                                    <ng-container *ngIf="email.touched" && email.invalid>
+                                        <p *ngIf="email.errors?.['required']" class="error">
+                                            Email is required!
+                                        </p>
+                                        <p *ngIf="email.errors?.['email']" class="error">
+                                            Email must be valid!
+                                        </p>
+                                    </ng-container>
+
+                                    <div ngModelGroup="passwords" #passwords="ngModelGroup" appPasswordCheck>
+                                        <label for="password">Password</label>
+                                        <input name="password" type="password" class="form-control" id="password"
+                                            placeholder="******" #password="ngModel" ngModel required
+                                            minlength="8">
+
+                                        <ng-container *ngIf="password.touched" && password.invalid>
+                                            <p *ngIf="password.errors?.['required']" class="error">
+                                                Password is required!
+                                            </p>
+                                            <p *ngIf="password.errors?.['minlength']" class="error">
+                                                Password must be at least 8 characters long!
+                                            </p>
+                                        </ng-container>
+
+                                        <label for="rePassword">Confirm Password</label>
+                                        <input name="rePassword" type="password" class="form-control" id="rePassword"
+                                            placeholder="Repeat Password..." #rePassword="ngModel" ngModel required>
+
+                                        <ng-container *ngIf="rePassword.touched" && rePassword.invalid>
+                                            <p *ngIf="rePassword.errors?.['required']" class="error">
+                                                Repeat Password is required!
+                                            </p>
+
+                                        </ng-container>
+                                    </div>
+                                    <ng-container *ngIf="rePassword.touched">
+                                        <p *ngIf="passwords.errors?.['passwordCheck']" class="error">
+                                            Passwords don't match!
+                                        </p>
+                                    </ng-container>
                                 </div>
                                 <div class="col-md-5">
                                     <fieldset>
-                                        <button type="submit" id="form-submit" class="button">Register</button>
+                                        <button id="form-submit" class="button">Register</button>
                                     </fieldset>
                                 </div>
                             </div>

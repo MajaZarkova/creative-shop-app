@@ -21,4 +21,16 @@ export class ProductsService {
     let query = limit ? `?limit=${limit}` : '';
     return this.http.get<IProduct[]>(`http://localhost:3000/products${query}`);
   }
+
+  createProduct(data: {productName: string; description: string; price: number; image: string; quantity: number; category: string}) {
+    return this.http.post<IProduct>('http://localhost:3000/products', data, {withCredentials: true});
+  }
+
+  removeProduct(id: string) {
+    return this.http.delete(`http://localhost:3000/delete/${id}`, {withCredentials: true});
+  }
+
+  editProduct(id: string, data: {productName: string; description: string; price: number; image: string; quantity: number; category: string}) {
+    return this.http.put<IProduct>(`http://localhost:3000/edit/${id}`, data, {withCredentials: true});
+  }
 }

@@ -27,6 +27,8 @@
                             onBlur="if(this.value == '') { this.value = '1';}" value="1">
                         <input type="submit" class="button" value="Order Now!">
                     </form>
+                    <button class="button" routerLink="/edit/{{product!._id}}">Edit product</button>
+                    <button class="remove-button" (click)="removeProduct(product!._id)">Remove product</button>
                     <div class="down-content">
                         <div class="categories">
                             <h6>Category: <span><a href="#">{{product!.category}}</a></span></h6>

@@ -1,5 +1,4 @@
 const express = require('express');
-const handlebars = require('express-handlebars');
 const session = require('express-session');
 const database = require('./config/database');
 const routesConfig = require('./config/routes');
@@ -10,10 +9,6 @@ start()
 
 async function start() {
     const app = express();
-    app.engine('.hbs', handlebars.create({
-        extname: '.hbs'
-    }).engine);
-    app.set('view engine', 'hbs');
 
     app.use(session({
         secret: 'my super duper secret',
@@ -21,6 +16,7 @@ async function start() {
         saveUninitialized: true,
         cookie: { secure: 'auto' }
     }));
+    app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
     app.use('/static', express.static('static'));
     app.use(userSession());

@@ -3,52 +3,43 @@ const { isGuest, isUser } = require('../middleware/guards');
 const { register, login } = require('../services/userService');
 const mapErrors = require('../util/mapper');
 
-router.get('/register', isGuest(), (req, res) => {
-    res.render('register', { title: 'Register Page' });
-});
-
-//TODO: check for action method and field names
-router.post('/register', isGuest(), async (req, res) => {
-    const {username, password, repass} = req.body;
+router.post('/register', async (req, res) => {
+    const {firstName, lastName, email, password, rePassword } = req.body;
 
     try {
-        if (username.trim() == '' || password.trim().length < 3) {
-            throw new Error('Username is required and password must be at least 3 characters long');
+        if (firstName.trim() == ''|| lastName.trim() == '' || password.trim().length < 8) {
+            throw new Error('First Name and Last Name are required and password must be at least 8 characters long');
         }
 
-        if (password != repass) {
+        if (password != rePassword) {
             throw new Error('Passwords don\'t match');
         }
 
-        const user = await register(username, password);
+        const user = await register(firstName, lastName, email, password);
         req.session.user = user;
-        res.redirect('/');
+        res.status(200).send(user);
     } catch (err) {
-        const errors = mapErrors(err);
-        res.render('register', { title: 'Register Page', data: { username: username }, errors })
+        console.log(mapErrors(err));
+        res.status(401).send(mapErrors(err));
     }
 });
 
-router.get('/login', isGuest(), (req, res) => {
-    res.render('login', { title: 'Login Page' })
-});
-
-router.post('/login', isGuest(), async (req, res) => {
-    const {username, password} = req.body;
+router.post('/login', async (req, res) => {
+    const {email, password} = req.body;
 
     try {
-       const user = await login(username, password);
+       const user = await login(email, password);
        req.session.user = user;
-       res.redirect('/');
+       res.status(200).send(user);
     } catch (err) {
-        const errors = mapErrors(err);
-        res.render('login', { title: 'Login Page', data: { username: username }, errors })
+        console.log(mapErrors(err));
+        res.status(401).send(mapErrors(err));
     }
 });
 
-router.get('/logout', isUser(), (req, res) => {
+router.post('/logout', (req, res) => {
     delete req.session.user;
-    res.redirect('/');
+    res.status(200);
 })
 
 module.exports = router;

@@ -1,5 +1,4 @@
 const { Schema, model, Types: { ObjectId } } = require('mongoose');
-const User = require('./User');
 //TODO: change Schema by the requirements
 //TODO: add Validation
 
@@ -18,7 +17,7 @@ const productSchema = new Schema({
         type: Number,
         // required: [true, 'Price is required'], min: 0
     },
-    seller: { type: ObjectId, ref: User },
+    seller: { type: ObjectId, ref: "User" },
     image: {
         type: String,
         // required: true, validate: {

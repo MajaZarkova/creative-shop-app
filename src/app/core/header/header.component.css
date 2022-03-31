@@ -11,6 +11,7 @@
 }
 
 /* Header Style */
+
 a {
 	display: inline-block;
 }
@@ -42,7 +43,7 @@ a {
 
 .navbar-dark .navbar-nav .nav-link {
 	text-transform: uppercase;
-	font-size: 15px;
+	font-size: 14px;
 	font-weight: 700;
 	color: #1e1e1e;
 	transition: all 0.5s;

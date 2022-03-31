@@ -1,0 +1,108 @@
+<div class="create-product-form">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h1>Add your product</h1>
+                    <div class="line-dec"></div>
+                </div>
+            </div>
+            <div class="col-md-8 offset-md-2">
+                <div class="main-content">
+                    <div class="container">
+                        <form #form="ngForm" id="subscribe" action="" method="get" (ngSubmit)="createProduct(form)">
+                            <div class="loginForm">
+                                <div class="col-md-7">
+                                    <label for="productName">Product Name</label>
+                                    <input name="productName" type="text" class="form-control" id="productName"
+                                        placeholder="Product Name..." #productName="ngModel" ngModel required
+                                        minlength="3">
+
+                                    <ng-container *ngIf="productName.touched" && productName.invalid>
+                                        <p *ngIf="productName.errors?.['required']" class="error">
+                                            Product Name is required!
+                                        </p>
+                                        <p *ngIf="productName.errors?.['minlength']" class="error">
+                                            Product Name must be at least 3 characters!
+                                        </p>
+                                    </ng-container>
+
+                                    <label for="description">Description</label>
+                                    <textarea name="description" type="text" class="form-control" id="description"
+                                        placeholder="Description..." #description="ngModel" ngModel required
+                                        minlength="4">
+                                    </textarea>
+
+                                    <ng-container *ngIf="description.touched" && description.invalid>
+                                        <p *ngIf="description.errors?.['required']" class="error">
+                                            Description is required!
+                                        </p>
+                                        <p *ngIf="description.errors?.['minlength']" class="error">
+                                            Description must be at least 4 characters!
+                                        </p>
+                                    </ng-container>
+
+                                    <label for="image">Product Image</label>
+                                    <input name="image" type="text" class="form-control" id="image"
+                                        placeholder="http://..." #image="ngModel" ngModel required>
+
+                                    <ng-container *ngIf="image.touched" && image.invalid>
+                                        <p *ngIf="image.errors?.['required']" class="error">
+                                            Image is required!
+                                        </p>
+                                        <!-- <p *ngIf="image.errors?.['min']" class="error">
+                                            Image must be valid!
+                                        </p> -->
+                                    </ng-container>
+                                </div>
+                                <div class="col-md-7">
+                                    <label for="price">Price</label>
+                                    <input name="price" type="number" class="form-control" id="price" placeholder="50"
+                                        #price="ngModel" ngModel required min="1">
+
+                                    <ng-container *ngIf="price.touched" && price.invalid>
+                                        <p *ngIf="price.errors?.['required']" class="error">
+                                            Price is required!
+                                        </p>
+                                        <p *ngIf="price.errors?.['min']" class="error">
+                                            Price must be valid!
+                                        </p>
+                                    </ng-container>
+
+                                    <label for="quantity">Quantity</label>
+                                    <input name="quantity" type="quantity" class="form-control" id="quantity"
+                                        placeholder="1" #quantity="ngModel" ngModel required min="1">
+
+                                    <ng-container *ngIf="quantity.touched" && quantity.invalid>
+                                        <p *ngIf="quantity.errors?.['required']" class="error">
+                                            Quantity is required!
+                                        </p>
+                                        <p *ngIf="quantity.errors?.['min']" class="error">
+                                            Quantity can not be less than 1!
+                                        </p>
+                                    </ng-container>
+
+                                    <label for="category">Category</label>
+                                    <input name="category" type="text" class="form-control" id="category"
+                                        placeholder="Woman" #category="ngModel" ngModel required>
+
+                                    <ng-container *ngIf="category.touched" && category.invalid>
+                                        <p *ngIf="category.errors?.['required']" class="error">
+                                            Category is required!
+                                        </p>
+                                    </ng-container>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <fieldset>
+                                    <button id="form-submit" class="button">Create</button>
+                                    <a class="aButton" routerLink="/products">Cancel</a>
+                                </fieldset>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

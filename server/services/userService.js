@@ -1,43 +1,55 @@
 const User = require('../models/User');
 const { hash, compare } = require('bcrypt');
+const bsonToJson = (data) => { return JSON.parse(JSON.stringify(data)) };
+const removePassword = (data) => {
+    const { hashedPassword, __v, ...userData } = data;
+    return userData
+}
 
-//TODO change parameters by requirements
-
-async function register(username, password) {
-    const existing = await getUserByUsername(username)
+async function register(firstName, lastName, email, password) {
+    const existing = await getUserByEmail(email)
     if (existing) {
-        throw new Error('Username is taken');
+        throw new Error('Email is taken');
     }
 
     const hashedPassword = await hash(password, 10);
     const user = new User({
-        username,
-        hashedPassword
+        firstName,
+        lastName,
+        email,
+        hashedPassword,
+        orders: [],
+        productsListed: []
     });
 
     await user.save();
 
-    return user;
+    let modifiedUser = removePassword(user);
+    modifiedUser = bsonToJson(user);
+
+    return modifiedUser;
 }
 
-async function login(username, password) {
-    const user = await getUserByUsername(username);
+async function login(email, password) {
+    const user = await getUserByEmail(email);
 
     if (!user) {
-        throw new Error('Incorrect Username or Password');
+        throw new Error('Incorrect Email or Password');
     }
 
     const validPassword = await compare(password, user.hashedPassword);
 
     if (!validPassword) {
-        throw new Error('Incorrect Username or Password');
+        throw new Error('Incorrect Email or Password');
     }
 
-    return user;
+    let modifiedUser = removePassword(user);
+    modifiedUser = bsonToJson(user);
+    return modifiedUser;
 }
 
-async function getUserByUsername(username) {
-    const user = await User.findOne({ username: new RegExp(`^${username}$`, 'i') });
+async function getUserByEmail(email) {
+    const user = await User.findOne({ email: new RegExp(`^${email}$`, 'i') });
     return user;
 }
 
