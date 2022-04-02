@@ -1,0 +1,87 @@
+<div class="single-product">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <div class="line-dec"></div>
+                    <h1>User Details</h1>
+                </div>
+            </div>
+            <div class="my-class">
+                <div class="product-slider">
+                    <div id="slider" class="flexslider">
+                        <img src="../../../assets/images/profile.jpg" />
+                    </div>
+                </div>
+            </div>
+            <div class="my-class-1">
+                <div class="right-content">
+                    <h4>{{user!.firstName}} {{user!.lastName}}</h4>
+                    <h6>{{user!.email}}</h6>
+                    <span>{{user!.orders.length}} orders made!</span><br>
+                    <span>{{productsListed!.length}} products listed!</span>
+                    <!-- <button class="button" routerLink="/edit/{{product!._id}}">Edit product</button>
+                    <button class="remove-button" (click)="removeProduct(product!._id)">Remove product</button>
+                    <div class="down-content">
+                    </div>
+                    <button class="button" routerLink="/products">Back to products</button> -->
+                </div>
+            </div>
+            <div class="featured-items">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="section-heading">
+                                <div class="line-dec"></div>
+                                <h1>My Orders</h1>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row posts" *ngIf="user!.orders.length > 0">
+                                <a *ngFor="let product of user!.orders" routerLink="/products/{{product!._id}}">
+                                    <div class="featured-item">
+                                        <img src="{{product!.image}}" alt="Item 1">
+                                        <h4>{{product!.productName}}</h4>
+                                        <h6>${{product!.price}}</h6>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="owl-carousel owl-theme" *ngIf="user!.orders.length == 0">
+                                <h4>Make your first order <button class="aButton" routerLink="/products">Catalog</button></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="featured-items">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="section-heading">
+                                <div class="line-dec"></div>
+                                <h1>Products for Sale</h1>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row posts" *ngIf="productsListed">
+                                <div *ngFor="let product of productsListed" id="{{product._id}}">
+                                    <a routerLink="/products/{{product._id}}">
+                                        <div class="featured-item">
+                                            <img src="{{product.image}}" alt="">
+                                            <h4>{{product.productName}}</h4>
+                                            <h6>${{product.price}}</h6>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="owl-carousel owl-theme" *ngIf="!productsListed">
+                                <h3>List your first product <button class="aButton" routerLink="/create">Create</button></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

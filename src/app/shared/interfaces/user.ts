@@ -5,7 +5,6 @@ export interface IUser {
     email: number;
     password: string;
     rePassword: string;
-    orders: string[];
-    productsListed: string[];
+    orders: any[];
     _v: number
 }

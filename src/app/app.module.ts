@@ -11,6 +11,7 @@ import { AboutComponent } from './about/about.component';
 import { UserModule } from './user/user.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsService } from './product/products.service';
+import { UserService } from './user/user.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ProductsService } from './product/products.service';
     AppRoutingModule
   ],
   providers: [
-    ProductsService
+    ProductsService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

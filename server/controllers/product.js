@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { isGuest, isUser } = require('../middleware/guards');
-const { getProducts, getOneProduct, createProduct, getRecentProducts, deleteProduct, editProduct } = require('../services/productService');
+const { getProducts, getOneProduct, createProduct, getRecentProducts, deleteProduct, editProduct, getUserProducts } = require('../services/productService');
 const mapErrors = require('../util/mapper');
 
 router.get('/products', async (req, res) => {
@@ -28,6 +28,12 @@ router.get('/products/:id', async (req, res) => {
     const product = await getOneProduct(productId);
     res.status(200).json(product);
 });
+
+router.get('/user/products/:userId', async (req, res) => {
+    const userId = req.params.userId;
+    const products = await getUserProducts(userId);
+    res.status(200).json(products);
+})
 
 router.post('/products', async (req, res) => {
     const data = {

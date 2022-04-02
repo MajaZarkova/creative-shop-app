@@ -7,6 +7,8 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
 import { UserService } from './user.service';
 import { PasswordCheckDirective } from './password-check.directive';
+import { ProfileComponent } from './profile/profile.component';
+import { ProductsService } from '../product/products.service';
 
 
 
@@ -14,7 +16,8 @@ import { PasswordCheckDirective } from './password-check.directive';
   declarations: [
     LoginComponent,
     RegisterComponent,
-    PasswordCheckDirective
+    PasswordCheckDirective,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +26,8 @@ import { PasswordCheckDirective } from './password-check.directive';
     FormsModule
   ],
   providers: [
-    UserService
+    UserService,
+    ProductsService
   ]
 })
 export class UserModule { }

@@ -18,8 +18,7 @@ async function register(firstName, lastName, email, password) {
         lastName,
         email,
         hashedPassword,
-        orders: [],
-        productsListed: []
+        orders: []
     });
 
     await user.save();

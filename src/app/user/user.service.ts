@@ -8,7 +8,7 @@ import { IUser } from '../shared/interfaces/user';
 })
 export class UserService {
 
-  public user: IUser | null | undefined = undefined;
+  public user: IUser | null | undefined;
 
   get isLogged(): boolean {
     return !!this.user;
@@ -33,7 +33,13 @@ export class UserService {
     )
   }
 
-  logout(): void {
-    this.user = null;
+  getUserProfile() {
+    return this.http.get<IUser | null>('http://localhost:3000/user/profile').pipe(
+      tap(user => this.user = user)
+    )
+  }
+
+  logout() {
+    return this.http.post('http://localhost:3000/logout', {}, {withCredentials: true});
   }
 }

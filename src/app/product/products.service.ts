@@ -22,6 +22,10 @@ export class ProductsService {
     return this.http.get<IProduct[]>(`http://localhost:3000/products${query}`);
   }
 
+  loadUserProducts(userId: string) {
+    return this.http.get<IProduct[]>(`http://localhost:3000/user/products/${userId}`);
+  }
+
   createProduct(data: {productName: string; description: string; price: number; image: string; quantity: number; category: string}) {
     return this.http.post<IProduct>('http://localhost:3000/products', data, {withCredentials: true});
   }

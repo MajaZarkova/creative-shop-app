@@ -39,7 +39,11 @@ router.post('/login', async (req, res) => {
 
 router.post('/logout', (req, res) => {
     delete req.session.user;
-    res.status(200);
+    res.status(200).json({});
+})
+
+router.get('/user/profile', (req, res) => {
+    req.session.user ? res.json(req.session.user) : res.send(null);
 })
 
 module.exports = router;

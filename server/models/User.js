@@ -44,10 +44,6 @@ const userSchema = new Schema({
     orders: [{
         type: ObjectId,
         ref: "Product"
-    }],
-    productsListed: [{
-        type: ObjectId,
-        ref: "Product"
     }]
 });
 
