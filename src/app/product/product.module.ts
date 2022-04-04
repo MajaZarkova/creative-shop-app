@@ -7,6 +7,7 @@ import { ProductsService } from './products.service';
 import { CreateProductComponent } from './create-product/create-product.component';
 import { FormsModule } from '@angular/forms';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { UserService } from '../user/user.service';
 
 
 
@@ -24,7 +25,8 @@ import { EditProductComponent } from './edit-product/edit-product.component';
   ],
   providers: [
     ProductRoutingModule,
-    ProductsService
+    ProductsService,
+    UserService
   ]
 })
 export class ProductModule { }

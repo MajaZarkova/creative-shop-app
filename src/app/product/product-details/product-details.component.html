@@ -7,28 +7,43 @@
                     <h1>Product Details</h1>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" *ngIf="product">
                 <div class="product-slider">
                     <div id="slider" class="flexslider">
                         <img src="{{product!.image}}" />
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" *ngIf="product">
                 <div class="right-content">
                     <h4>{{product!.productName}}</h4>
                     <h6>${{product!.price}}</h6>
                     <p>{{product!.description}}</p>
                     <span>{{product!.quantity}} left on stock</span>
-                    <form action="" method="get">
-                        <label for="quantity">Quantity:</label>
-                        <input name="quantity" type="quantity" class="quantity-text" id="quantity"
-                            onfocus="if(this.value == '1') { this.value = ''; }"
-                            onBlur="if(this.value == '') { this.value = '1';}" value="1">
-                        <input type="submit" class="button" value="Order Now!">
-                    </form>
-                    <button class="button" routerLink="/edit/{{product!._id}}">Edit product</button>
-                    <button class="remove-button" (click)="removeProduct(product!._id)">Remove product</button>
+
+                    <ng-container *ngIf="isLogged">
+                        <ng-container *ngIf="!isOwner">
+                            <form action="" method="get">
+                                <label for="quantity">Quantity:</label>
+                                <input name="quantity" type="quantity" class="quantity-text" id="quantity"
+                                    onfocus="if(this.value == '1') { this.value = ''; }"
+                                    onBlur="if(this.value == '') { this.value = '1';}" value="1">
+                                <input type="submit" class="button" value="Order Now!">
+                            </form>
+                        </ng-container>
+
+                        <ng-container *ngIf="isOwner">
+                            <button class="button" routerLink="/edit/{{product!._id}}">Edit product</button>
+                            <button class="remove-button" (click)="removeProduct(product!._id)">Remove
+                                product</button>
+                        </ng-container>
+
+                    </ng-container>
+
+                    <ng-container *ngIf="!isLogged">
+                        <h4><button class="button" routerLink="/login">Login</button> to make your order! </h4>
+                    </ng-container>
+
                     <div class="down-content">
                         <div class="categories">
                             <h6>Category: <span><a href="#">{{product!.category}}</a></span></h6>
@@ -37,6 +52,9 @@
                     <button class="button" routerLink="/products">Back to products</button>
                 </div>
             </div>
+            <ng-container *ngIf="!product">
+                <h4>Loading product...</h4>
+            </ng-container>
         </div>
     </div>
 </div>

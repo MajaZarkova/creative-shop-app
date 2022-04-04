@@ -3,7 +3,16 @@ export interface IProduct {
     productName: string;
     description: string;
     price: number;
-    seller: string;
+    seller: {
+        _id: string;
+        firstName: string;
+        lastName: string;
+        email: number;
+        password: string;
+        rePassword: string;
+        orders: any[];
+        _v: number
+    }
     image: string;
     quantity: number;
     category: string;

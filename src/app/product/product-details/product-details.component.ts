@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IProduct } from 'src/app/shared/interfaces/product';
+import { UserService } from 'src/app/user/user.service';
 import { ProductsService } from '../products.service';
 
 @Component({
@@ -11,10 +12,19 @@ import { ProductsService } from '../products.service';
 export class ProductDetailsComponent {
 
   product: IProduct | undefined;
+  get isOwner(): boolean {
+    return this.userService.user?._id == this.product?.seller._id;
+  }
+
+  get isLogged(): boolean {
+    return this.userService.isLogged;
+  }
 
   constructor(private productsService: ProductsService,
-    private activatedRoute: ActivatedRoute, private router: Router) {
-    this.fetchOneProduct()
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private userService: UserService) {
+    this.fetchOneProduct();
   }
 
   fetchOneProduct(): void {
