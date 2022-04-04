@@ -13,9 +13,9 @@ export class ProfileComponent implements OnInit {
   user = this.userService.user;
   productsListed: IProduct[] | undefined = undefined;
 
-  constructor(private userService: UserService, private productsService: ProductsService) { 
-    console.log(this.user);
+  constructor(private userService: UserService, private productsService: ProductsService) {
     this.fetchUserProducts();
+    console.log(this.productsListed);
   }
 
   ngOnInit(): void {

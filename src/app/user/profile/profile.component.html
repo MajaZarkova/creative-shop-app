@@ -63,7 +63,7 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="row posts" *ngIf="productsListed">
+                            <div class="row posts" *ngIf="productsListed!.length > 0">
                                 <div *ngFor="let product of productsListed" id="{{product._id}}">
                                     <a routerLink="/products/{{product._id}}">
                                         <div class="featured-item">
@@ -75,8 +75,8 @@
                                 </div>
                             </div>
                             
-                            <div class="owl-carousel owl-theme" *ngIf="!productsListed">
-                                <h3>List your first product <button class="aButton" routerLink="/create">Create</button></h3>
+                            <div class="owl-carousel owl-theme" *ngIf="productsListed!.length == 0">
+                                <h4>List your first product <button class="aButton" routerLink="/create">Create</button></h4>
                             </div>
                         </div>
                     </div>

@@ -37,7 +37,6 @@ router.post('/login', async (req, res) => {
         const user = await login(email, password);
         const token = jwt.createToken({ id: user._id });
 
-        // req.session.cookie.user = user;
         res.cookie(authCookieName, token, { httpOnly: true })
         res.status(200).send(user);
     } catch (err) {
@@ -48,7 +47,7 @@ router.post('/login', async (req, res) => {
 
 router.post('/logout', (req, res) => {
     const token = req.cookies[authCookieName];
-    // delete req.session.cookie.user;
+
     TokenBlacklistModel.create({ token })
         .then(() => {
             res.clearCookie(authCookieName)
@@ -56,12 +55,9 @@ router.post('/logout', (req, res) => {
                 .send({ message: 'Logged out!' });
         })
         .catch(err => res.send(err));
-
-    // res.status(200).json({});
 })
 
 router.get('/user/profile', auth(), async (req, res) => {
-    console.log(req.cookies[authCookieName]);
     const { _id: userId } = req.user;
     const user = await getProfileInfo({ _id: userId });
     res.status(200).json(user);
