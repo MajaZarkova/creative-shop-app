@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { isGuest, isUser } = require('../middleware/guards');
-const { getProducts, getOneProduct, createProduct, getRecentProducts, deleteProduct, editProduct, getUserProducts } = require('../services/productService');
+const { getProducts, getOneProduct, createProduct, getRecentProducts, deleteProduct, editProduct, getUserProducts, updateProduct } = require('../services/productService');
+const { updateUserOrders } = require('../services/userService');
 const mapErrors = require('../util/mapper');
 
 router.get('/products', async (req, res) => {
@@ -79,6 +80,20 @@ router.put('/edit/:id', async (req, res) => {
     try {
         const product = await editProduct(productId, data);
         res.status(200).json(product);
+    } catch (error) {
+        console.log(mapErrors(error))
+    }
+})
+
+router.put('/order/:id/:userId', async (req, res) => {
+    const productId = req.params.id;
+    const userId = req.params.userId;
+    const value = req.body.quantity;
+    console.log(value);
+    try {
+        await updateProduct(productId, value);
+        await updateUserOrders(productId, userId)
+        res.status(200).json({});
     } catch (error) {
         console.log(mapErrors(error))
     }

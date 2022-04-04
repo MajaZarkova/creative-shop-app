@@ -42,17 +42,21 @@ async function deleteProduct(id) {
     await Product.findByIdAndDelete(id);
 }
 
-// async function vote(id, userId, value) {
-//     const Product = await Product.findById(id);
+async function updateProduct(id, value) {
+    const product = await Product.findById(id);
 
-//     if (Product.votes.includes(userId)) {
-//         throw new Error('User already voted!');
-//     }
+    if (product.quantity == 0) {
+        throw new Error('Product is out of stock!');
+    }
 
-//     Product.votes.push(userId);
-//     Product.rating += value;
-//     await Product.save();
-// }
+    if (product.quantity - value < 0) {
+        throw new Error('There are not enough items in stock!');
+    }
+
+    product.quantity -= value;
+
+    await product.save();
+}
 
 module.exports = {
     createProduct,
@@ -61,5 +65,6 @@ module.exports = {
     getRecentProducts,
     editProduct,
     deleteProduct,
-    getUserProducts
+    getUserProducts,
+    updateProduct
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IProduct } from 'src/app/shared/interfaces/product';
 import { UserService } from 'src/app/user/user.service';
@@ -12,6 +13,7 @@ import { ProductsService } from '../products.service';
 export class ProductDetailsComponent {
 
   product: IProduct | undefined;
+  private id = this.activatedRoute.snapshot.params['productId'];
   get isOwner(): boolean {
     return this.userService.user?._id == this.product?.seller._id;
   }
@@ -29,12 +31,23 @@ export class ProductDetailsComponent {
 
   fetchOneProduct(): void {
     this.product = undefined;
-    const id = this.activatedRoute.snapshot.params['productId'];
-    this.productsService.loadOneProduct(id).subscribe(product => this.product = product);
+    this.productsService.loadOneProduct(this.id).subscribe(product => this.product = product);
   }
 
   removeProduct(id: string): void {
     this.productsService.removeProduct(id).subscribe({
+      next: (product) => {
+        this.router.navigate(['/products']);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+  }
+
+  orderProduct(form: NgForm): void {
+    console.log(form.value);
+    this.productsService.orderProduct(this.id, this.userService.user!._id, form.value).subscribe({
       next: (product) => {
         this.router.navigate(['/products']);
       },

@@ -10,7 +10,7 @@
             <div class="col-md-8 offset-md-2">
                 <div class="main-content">
                     <div class="container">
-                        <form #form="ngForm" id="subscribe" action="" method="get" (submit)="loginUser(form)">
+                        <form #form="ngForm" id="subscribe" action="" method="get" (ngSubmit)="loginUser(form)">
                             <div class="loginForm">
                                 <div class="col-md-7">
                                     <label for="email">Email</label>

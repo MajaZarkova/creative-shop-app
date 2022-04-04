@@ -19,15 +19,25 @@
                     <h4>{{product!.productName}}</h4>
                     <h6>${{product!.price}}</h6>
                     <p>{{product!.description}}</p>
-                    <span>{{product!.quantity}} left on stock</span>
+
+                    <span *ngIf="product!.quantity == 0">Out of stock</span>
+                    <span *ngIf="product!.quantity > 0">{{product!.quantity}} left on stock</span>
 
                     <ng-container *ngIf="isLogged">
                         <ng-container *ngIf="!isOwner">
-                            <form action="" method="get">
+                            <form *ngIf="product!.quantity > 0" #form="ngForm" action="" method="get" (ngSubmit)="orderProduct(form)">
                                 <label for="quantity">Quantity:</label>
-                                <input name="quantity" type="quantity" class="quantity-text" id="quantity"
-                                    onfocus="if(this.value == '1') { this.value = ''; }"
-                                    onBlur="if(this.value == '') { this.value = '1';}" value="1">
+                                <input name="quantity" type="number" class="quantity-text" id="quantity"
+                                    placeholder="1" ngModel
+                                    #quantity="ngModel" required min="1">
+                                <ng-container *ngIf="quantity.touched" && quantity.invalid>
+                                    <p *ngIf="quantity.errors?.['required']" class="error">
+                                        Quantity is required!
+                                    </p>
+                                    <p *ngIf="quantity.errors?.['min']" class="error">
+                                        Quantity can not be 0!
+                                    </p>
+                                </ng-container>
                                 <input type="submit" class="button" value="Order Now!">
                             </form>
                         </ng-container>

@@ -48,17 +48,25 @@ async function login(email, password) {
 }
 
 async function getUserByEmail(email) {
-    const user = await User.findOne({ email: new RegExp(`^${email}$`, 'i') });
+    const user = await User.findOne({ email: new RegExp(`^${email}$`, 'i') }).populate('orders');
     return user;
 }
 
 async function getProfileInfo(userObj) {
-    const user = await User.findOne(userObj, { password: 0, __v: 0 });
+    const user = await User.findOne(userObj, { password: 0, __v: 0 }).populate('orders');
     return user; 
+}
+
+async function updateUserOrders(id, userId) {
+    const user = await User.findById(userId);
+
+    user.orders.push(id);
+    await user.save();
 }
 
 module.exports = {
     register,
     login,
-    getProfileInfo
+    getProfileInfo,
+    updateUserOrders
 }
