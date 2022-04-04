@@ -45,7 +45,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
-router.post('/logout', (req, res) => {
+router.post('/logout', auth(), (req, res) => {
     const token = req.cookies[authCookieName];
 
     TokenBlacklistModel.create({ token })

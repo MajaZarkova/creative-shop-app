@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { isGuest, isUser } = require('../middleware/guards');
+const { auth } = require('../util')
 const { getProducts, getOneProduct, createProduct, getRecentProducts, deleteProduct, editProduct, getUserProducts, updateProduct } = require('../services/productService');
 const { updateUserOrders } = require('../services/userService');
 const mapErrors = require('../util/mapper');
@@ -30,7 +31,7 @@ router.get('/products/:id', async (req, res) => {
     res.status(200).json(product);
 });
 
-router.get('/user/products/:userId', async (req, res) => {
+router.get('/user/products/:userId', auth(), async (req, res) => {
     const userId = req.params.userId;
     const products = await getUserProducts(userId);
     res.status(200).json(products);
@@ -56,7 +57,7 @@ router.post('/products', async (req, res) => {
 
 });
 
-router.delete('/delete/:id', async (req, res) => {
+router.delete('/delete/:id', auth(), async (req, res) => {
     const productId = req.params.id;
     try {
         await deleteProduct(productId);
@@ -66,7 +67,7 @@ router.delete('/delete/:id', async (req, res) => {
     }
 })
 
-router.put('/edit/:id', async (req, res) => {
+router.put('/edit/:id', auth(), async (req, res) => {
     const productId = req.params.id;
     const data = {
         productName: req.body.productName,
@@ -78,21 +79,21 @@ router.put('/edit/:id', async (req, res) => {
         category: req.body.category,
     };
     try {
-        const product = await editProduct(productId, data);
+        const product = await editProduct(productId, data, userId);
         res.status(200).json(product);
     } catch (error) {
         console.log(mapErrors(error))
     }
 })
 
-router.put('/order/:id/:userId', async (req, res) => {
+router.put('/order/:id/:userId', auth(), async (req, res) => {
     const productId = req.params.id;
     const userId = req.params.userId;
     const value = req.body.quantity;
-    console.log(value);
+
     try {
-        await updateProduct(productId, value);
-        await updateUserOrders(productId, userId)
+        await updateProduct(productId, value, userId);
+        await updateUserOrders(productId, userId, value)
         res.status(200).json({});
     } catch (error) {
         console.log(mapErrors(error))

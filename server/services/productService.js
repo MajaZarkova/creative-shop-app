@@ -42,8 +42,12 @@ async function deleteProduct(id) {
     await Product.findByIdAndDelete(id);
 }
 
-async function updateProduct(id, value) {
+async function updateProduct(id, value, userId) {
     const product = await Product.findById(id);
+
+    if(product.seller == userId) {
+        throw new Error('User is the seller of the product!');
+    }
 
     if (product.quantity == 0) {
         throw new Error('Product is out of stock!');

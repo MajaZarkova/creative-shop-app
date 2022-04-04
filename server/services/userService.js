@@ -57,10 +57,14 @@ async function getProfileInfo(userObj) {
     return user; 
 }
 
-async function updateUserOrders(id, userId) {
+async function updateUserOrders(id, userId, value) {
     const user = await User.findById(userId);
 
-    user.orders.push(id);
+    while(value) {
+        user.orders.push(id);
+        value--
+    }
+    
     await user.save();
 }
 

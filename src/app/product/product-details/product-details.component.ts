@@ -46,7 +46,6 @@ export class ProductDetailsComponent {
   }
 
   orderProduct(form: NgForm): void {
-    console.log(form.value);
     this.productsService.orderProduct(this.id, this.userService.user!._id, form.value).subscribe({
       next: (product) => {
         this.router.navigate(['/products']);

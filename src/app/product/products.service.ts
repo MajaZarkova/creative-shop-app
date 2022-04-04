@@ -23,7 +23,7 @@ export class ProductsService {
   }
 
   loadUserProducts(userId: string) {
-    return this.http.get<IProduct[]>(`http://localhost:3000/user/products/${userId}`);
+    return this.http.get<IProduct[]>(`http://localhost:3000/user/products/${userId}`, { withCredentials: true });
   }
 
   createProduct(data: { productName: string; description: string; price: number; image: string; quantity: number; category: string }) {

@@ -14,7 +14,7 @@
                     </div>
                 </div>
             </div>
-            <div class="my-class-1">
+            <div *ngIf="productsListed" class="my-class-1">
                 <div class="right-content">
                     <h4>{{user!.firstName}} {{user!.lastName}}</h4>
                     <h6>{{user!.email}}</h6>
@@ -53,7 +53,7 @@
                     </div>
                 </div>
             </div>
-            <div class="featured-items">
+            <div *ngIf="productsListed" class="featured-items">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -81,6 +81,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div *ngIf="!productsListed">
+                <h4>Loading...</h4>
             </div>
         </div>
     </div>

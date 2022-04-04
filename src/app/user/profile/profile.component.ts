@@ -10,12 +10,13 @@ import { UserService } from '../user.service';
 })
 export class ProfileComponent implements OnInit {
 
-  user = this.userService.user;
+  get user() {
+    return this.userService.user;
+  } 
   productsListed: IProduct[] | undefined = undefined;
 
   constructor(private userService: UserService, private productsService: ProductsService) {
     this.fetchUserProducts();
-    console.log(this.productsListed);
   }
 
   ngOnInit(): void {

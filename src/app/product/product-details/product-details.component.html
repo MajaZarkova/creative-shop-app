@@ -28,14 +28,17 @@
                             <form *ngIf="product!.quantity > 0" #form="ngForm" action="" method="get" (ngSubmit)="orderProduct(form)">
                                 <label for="quantity">Quantity:</label>
                                 <input name="quantity" type="number" class="quantity-text" id="quantity"
-                                    placeholder="1" ngModel
-                                    #quantity="ngModel" required min="1">
+                                    placeholder="0" ngModel
+                                    #quantity="ngModel" required min="1" max="{{product!.quantity}}">
                                 <ng-container *ngIf="quantity.touched" && quantity.invalid>
                                     <p *ngIf="quantity.errors?.['required']" class="error">
                                         Quantity is required!
                                     </p>
                                     <p *ngIf="quantity.errors?.['min']" class="error">
                                         Quantity can not be 0!
+                                    </p>
+                                    <p *ngIf="quantity.errors?.['max']" class="error">
+                                        Quantity can not be more than the items in stock!
                                     </p>
                                 </ng-container>
                                 <input type="submit" class="button" value="Order Now!">
