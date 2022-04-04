@@ -34,12 +34,14 @@ export class UserService {
   }
 
   getUserProfile() {
-    return this.http.get<IUser | null>('http://localhost:3000/user/profile').pipe(
+    return this.http.get<IUser | null>('http://localhost:3000/user/profile', { withCredentials: true }).pipe(
       tap(user => this.user = user)
     )
   }
 
   logout() {
-    return this.http.post('http://localhost:3000/logout', {}, {withCredentials: true});
+    return this.http.post('http://localhost:3000/logout', {}, { withCredentials: true }).pipe(
+      tap(user => this.user = null)
+    )
   }
 }

@@ -1,8 +1,8 @@
 const express = require('express');
-const session = require('express-session');
 const database = require('./config/database');
 const routesConfig = require('./config/routes');
-const userSession = require('./middleware/userSession');
+const cookieParser = require('cookie-parser');
+const cookieSecret = process.env.COOKIESECRET || 'SoftUni';
 const cors = require('cors');
 
 start()
@@ -10,16 +10,10 @@ start()
 async function start() {
     const app = express();
 
-    app.use(session({
-        secret: 'my super duper secret',
-        resave: false,
-        saveUninitialized: true,
-        cookie: { secure: 'auto' }
-    }));
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
+    app.use(cookieParser(cookieSecret));
     app.use('/static', express.static('static'));
-    app.use(userSession());
     app.use(cors({
         origin: ['http://localhost:5555', 'http://localhost:4200'],
         credentials: true

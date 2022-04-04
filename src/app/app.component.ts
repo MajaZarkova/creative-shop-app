@@ -10,6 +10,10 @@ export class AppComponent {
   title = 'creative-shop-app';
 
   constructor(private userService: UserService) {
-    this.userService.getUserProfile().subscribe();
+    this.userService.getUserProfile().subscribe({
+      error: () => {
+        this.userService.user = null;
+      }
+    });
   }
 }

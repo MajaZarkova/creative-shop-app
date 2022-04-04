@@ -52,7 +52,13 @@ async function getUserByEmail(email) {
     return user;
 }
 
+async function getProfileInfo(userObj) {
+    const user = await User.findOne(userObj, { password: 0, __v: 0 });
+    return user; 
+}
+
 module.exports = {
     register,
-    login
+    login,
+    getProfileInfo
 }
