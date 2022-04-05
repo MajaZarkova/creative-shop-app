@@ -8,6 +8,7 @@ import { CreateProductComponent } from './create-product/create-product.componen
 import { FormsModule } from '@angular/forms';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { UserService } from '../user/user.service';
+import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
 
 
 
@@ -16,7 +17,8 @@ import { UserService } from '../user/user.service';
     ProductsComponent,
     ProductDetailsComponent,
     CreateProductComponent,
-    EditProductComponent
+    EditProductComponent,
+    OrderConfirmationComponent
   ],
   imports: [
     CommonModule,

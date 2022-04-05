@@ -65,7 +65,7 @@ export class ProductDetailsComponent {
 
     this.productsService.orderProduct(this.id, this.userService.user!._id, form.value).subscribe({
       next: (product) => {
-        this.router.navigate(['/products']);
+        this.router.navigate(['/order-confirmation']);
       },
       error: (err) => {
         console.log(err);

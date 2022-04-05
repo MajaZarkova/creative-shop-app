@@ -1,4 +1,3 @@
-/* About Us Style */
 .about-page {
 	margin-top: 50px;
     margin-bottom: 80px;
@@ -11,34 +10,4 @@
 }
 .about-page .left-image img {
 	max-width: 100%;
-}
-.about-page .right-content span {
-	display: inline-block;
-	margin-left: 8px;
-}
-.about-page .right-content span a i {
-	transition: all 0.5s;
-	background-color: #aaa;
-	width: 26px;
-	height: 26px;
-	display: inline-block;
-	text-align: center;
-	line-height: 26px;
-	border-radius: 50%;
-	color: #fff;
-	font-size: 12px;
-	margin-right: 5px;
-}
-.about-page .right-content .share {
-	margin-top: 20px;
-	border-top: 1px solid #eee;
-	padding: 15px 0px;
-}
-.about-page .right-content h6 {
-	font-size: 14px;
-	color: #4a4a4a;
-	font-weight: 400;
-}
-.about-page .right-content span a:hover i {
-	background-color: #3a8bcd;
 }
