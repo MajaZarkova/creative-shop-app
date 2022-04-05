@@ -1,4 +1,3 @@
-/* Subscribe Style */
 input {
     margin-bottom: 8px;
 }
@@ -11,7 +10,7 @@ h6 {
     margin-top: 10px;
 }
 
-.loginForm {
+.createForm {
     display: flex;
     /* padding-left: 60%; */
     /* flex-wrap: wrap; */

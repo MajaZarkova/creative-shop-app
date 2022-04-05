@@ -1,10 +1,8 @@
-/* Banner Style */
 .banner {
 	margin-top: 50px;
 	background-image: url(../../assets/images/banner4.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
-	/* padding: 400px 0px 50px 50px; */
     padding-left: 5%;
     padding-top: 200px;
     padding-bottom: 150px;
@@ -32,7 +30,6 @@
 	margin-bottom: 20px;
 }
 
-/* Featured Style */
 .featured-items {
 	margin-bottom: 70px;
     display: inline-flex;
@@ -47,7 +44,7 @@
 	margin: 10px;
 }
 .featured-item:hover {
-	opacity: 0.9;
+	opacity: 0.5;
 }
 .featured-item img {
 	width: 150px;
@@ -69,29 +66,9 @@
 	font-weight: 700;
 	margin-bottom: 0px;
 }
-.owl-theme .owl-dots {
-	text-align: center;
-	margin-top: 30px;
-}
-.owl-theme .owl-dots .owl-dot {
-	outline: none;
-}
-.owl-theme .owl-dots .active span {
-	background-color: #3a8bcd!important;
-}
-.owl-theme .owl-dots .owl-dot span {
-	background-color: #aaa;
-	width: 8px;
-	height: 8px;
-	display: inline;
-	margin: 0px 5px;
-	outline: none;
-}
-
 .owl-theme {
     display: flex;
 	width: 100%;
-	/* padding-left: 10%; */
 	margin-left: 10%;
 	margin-right: 10%;
 }
