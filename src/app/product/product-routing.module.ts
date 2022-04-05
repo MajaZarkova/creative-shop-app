@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../core/guards/auth.guard';
 import { CreateProductComponent } from './create-product/create-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
@@ -22,11 +23,13 @@ const routes: Routes = [
   },
   {
     path: 'create',
-    component: CreateProductComponent
+    component: CreateProductComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'edit/:productId',
-    component: EditProductComponent
+    component: EditProductComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

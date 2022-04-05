@@ -35,6 +35,12 @@ export class ProductDetailsComponent {
   }
 
   removeProduct(id: string): void {
+    if (!this.isOwner) {
+      this.router.navigate([`/products`]); //add error handler component
+      console.log('Only owner can remove a product')
+      return;
+    }
+
     this.productsService.removeProduct(id).subscribe({
       next: (product) => {
         this.router.navigate(['/products']);
@@ -46,6 +52,17 @@ export class ProductDetailsComponent {
   }
 
   orderProduct(form: NgForm): void {
+    if (!this.isLogged) {
+      this.router.navigate([`/login`]);
+      return;
+    }
+
+    if (this.isOwner) {
+      this.router.navigate([`/products`]); //add error handler component
+      console.log('Owner cannot order their own products!');
+      return;
+    }
+
     this.productsService.orderProduct(this.id, this.userService.user!._id, form.value).subscribe({
       next: (product) => {
         this.router.navigate(['/products']);

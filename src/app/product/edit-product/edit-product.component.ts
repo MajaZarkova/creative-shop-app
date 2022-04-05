@@ -19,6 +19,10 @@ export class EditProductComponent {
     return this.userService.user;
   }
 
+  get isOwner(): boolean {
+    return this.userService.user?._id == this.product?.seller._id;
+  }
+
   constructor(private productsService: ProductsService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -33,9 +37,9 @@ export class EditProductComponent {
 
   editProduct(form: NgForm): void {
 
-    if (this.product?.seller._id !== this.user?._id) {
-      console.log(this.product?.seller._id)
-      this.router.navigate([`/products/${this.id}`])
+    if (!this.isOwner) {
+      this.router.navigate([`/products/${this.id}`]) // add error component
+      console.log('Only owner can edit a product!')
       return;
     }
 
