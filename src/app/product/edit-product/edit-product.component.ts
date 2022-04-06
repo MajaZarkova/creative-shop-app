@@ -43,6 +43,7 @@ export class EditProductComponent {
       return;
     }
 
+    form.value.category = this.transformCategoryValue(form.value.category);
     this.productsService.editProduct(this.id, form.value).subscribe({
       next: (product) => {
         this.router.navigate([`/products/${this.id}`]);
@@ -53,4 +54,13 @@ export class EditProductComponent {
     })
   }
 
+  private transformCategoryValue(value: string): string {
+    if (value == 'Woman') {
+      value = 'Women'
+    } else if (value == 'Man') {
+      value = 'Men'
+    }
+
+    return value;
+  }
 }

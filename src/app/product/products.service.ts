@@ -22,8 +22,8 @@ export class ProductsService {
     return this.http.get<IProduct[]>(`http://localhost:3000/products${query}`);
   }
 
-  loadUserProducts(userId: string) {
-    return this.http.get<IProduct[]>(`http://localhost:3000/user/products/${userId}`, { withCredentials: true });
+  loadUserProducts() {
+    return this.http.get<IProduct[]>(`http://localhost:3000/user/products`, { withCredentials: true });
   }
 
   createProduct(data: { productName: string; description: string; price: number; image: string; quantity: number; category: string }) {
@@ -38,7 +38,7 @@ export class ProductsService {
     return this.http.put<IProduct>(`http://localhost:3000/edit/${id}`, data, { withCredentials: true });
   }
 
-  orderProduct(id: string, userId: string, data: { quantity: number }) {
-    return this.http.put(`http://localhost:3000/order/${id}/${userId}`, data, { withCredentials: true });
+  orderProduct(id: string, data: { quantity: number }) {
+    return this.http.put(`http://localhost:3000/order/${id}`, data, { withCredentials: true });
   }
 }

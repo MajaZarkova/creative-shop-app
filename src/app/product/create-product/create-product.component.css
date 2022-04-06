@@ -131,6 +131,10 @@ fieldset {
     margin-left: 50%;
 }
 
+fieldset a {
+	color: #fff;
+}
+
 p.error {
     border-radius: 0.3em;
 	background-color: tomato;

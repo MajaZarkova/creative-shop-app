@@ -81,7 +81,7 @@
 
                                     <label for="category">Category</label>
                                     <input name="category" type="text" class="form-control" id="category"
-                                        placeholder="Woman" #category="ngModel" ngModel required>
+                                        placeholder="Women, Men or Unisex?" #category="ngModel" ngModel required>
 
                                     <ng-container *ngIf="category.touched" && category.invalid>
                                         <p *ngIf="category.errors?.['required']" class="error">

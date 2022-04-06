@@ -10,6 +10,8 @@ import { UserService } from '../user.service';
 })
 export class ProfileComponent {
 
+  isLoading = true;
+
   get user() {
     return this.userService.user;
   } 
@@ -17,11 +19,13 @@ export class ProfileComponent {
 
   constructor(private userService: UserService, private productsService: ProductsService) {
     this.fetchUserProducts();
+    this.userService.getUserProfile().subscribe(() => {
+      this.isLoading = false;
+    })
   }
 
   fetchUserProducts(): void {
-    const userId = this.user!._id;
-    this.productsService.loadUserProducts(userId).subscribe(products => this.productsListed = products);
+    this.productsService.loadUserProducts().subscribe(products => this.productsListed = products);
   }
 
 }
