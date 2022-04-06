@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ProductsService } from 'src/app/product/products.service';
 import { IProduct } from 'src/app/shared/interfaces/product';
 import { UserService } from '../user.service';
@@ -8,7 +8,7 @@ import { UserService } from '../user.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent {
 
   get user() {
     return this.userService.user;
@@ -17,9 +17,6 @@ export class ProfileComponent implements OnInit {
 
   constructor(private userService: UserService, private productsService: ProductsService) {
     this.fetchUserProducts();
-  }
-
-  ngOnInit(): void {
   }
 
   fetchUserProducts(): void {

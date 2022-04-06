@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductsService } from '../products.service';
@@ -8,12 +8,9 @@ import { ProductsService } from '../products.service';
   templateUrl: './create-product.component.html',
   styleUrls: ['./create-product.component.css']
 })
-export class CreateProductComponent implements OnInit {
+export class CreateProductComponent {
 
   constructor(private productsService: ProductsService, private router: Router) { }
-
-  ngOnInit(): void {
-  }
 
   createProduct(form: NgForm) {
     this.productsService.createProduct(form.value).subscribe({

@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-order-confirmation',
   templateUrl: './order-confirmation.component.html',
   styleUrls: ['./order-confirmation.component.css']
 })
-export class OrderConfirmationComponent implements OnInit {
+export class OrderConfirmationComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

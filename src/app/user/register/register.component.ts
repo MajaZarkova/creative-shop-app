@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
@@ -8,12 +8,9 @@ import { UserService } from '../user.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
 
   constructor(private userService: UserService, private router: Router) { }
-
-  ngOnInit(): void {
-  }
 
   registerUser(userForm: NgForm): void {
     const {firstName, lastName, email, passwords} = userForm.value;

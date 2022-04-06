@@ -1,4 +1,4 @@
-<div class="create-product-form">
+<div class="edit-product-form">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -11,7 +11,7 @@
                 <div class="main-content">
                     <div class="container">
                         <form *ngIf="product" #form="ngForm" id="subscribe" action="" method="get" (ngSubmit)="editProduct(form)">
-                            <div class="loginForm">
+                            <div class="editForm">
                                 <div class="col-md-7">
                                     <label for="productName">Product Name</label>
                                     <input name="productName" type="text" class="form-control" id="productName"
@@ -50,9 +50,6 @@
                                         <p *ngIf="image.errors?.['required']" class="error">
                                             Image is required!
                                         </p>
-                                        <!-- <p *ngIf="image.errors?.['min']" class="error">
-                                            Image must be valid!
-                                        </p> -->
                                     </ng-container>
                                 </div>
                                 <div class="col-md-7">

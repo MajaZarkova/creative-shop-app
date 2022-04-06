@@ -1,4 +1,3 @@
-/* Single Product Style */
 img {
 	width: 500px;
 	height: 400px;
@@ -13,12 +12,6 @@ img {
 .flexslider {
 	border: none!important;
 	align-items: center;
-}
-#carousel {
-	margin-top: 20px;
-}
-#carousel .slides li {
-	width: 150px!important;
 }
 .single-product .right-content h4 {
 	font-size: 17px;
@@ -113,10 +106,7 @@ img {
 	margin-top: 30px;
 	padding: 10px 0px;
 }
-.single-product .right-content .down-content .share {
-	border-top: 1px solid #eee;
-	padding: 10px 0px;
-}
+
 .single-product .right-content .down-content h6 {
 	font-size: 14px;
 	color: #4a4a4a;

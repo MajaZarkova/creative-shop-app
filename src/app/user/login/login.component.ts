@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
@@ -8,12 +8,9 @@ import { UserService } from '../user.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   constructor(private userService: UserService, private router: Router) { }
-
-  ngOnInit(): void {
-  }
 
   loginUser(userForm: NgForm): void {
     this.userService.login(userForm.value).subscribe({
