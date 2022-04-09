@@ -30,22 +30,22 @@
           </li>
           <ng-container *ngIf="!isLogged">
             <li routerLinkActive="active" class="nav-item">
-              <a class="nav-link" routerLink="/login">Login</a>
+              <a class="nav-link" routerLink="/user/login">Login</a>
             </li>
             <li routerLinkActive="active" class="nav-item">
-              <a class="nav-link" routerLink="/register">Register</a>
+              <a class="nav-link" routerLink="/user/register">Register</a>
             </li>
           </ng-container>
 
           <ng-container *ngIf="isLogged">
             <li routerLinkActive="active" class="nav-item">
-              <a class="nav-link" routerLink="/create">Create</a>
+              <a class="nav-link" routerLink="/products/create">Create</a>
             </li>
             <li class="nav-item" (click)="logout()">
               <a class="nav-link" routerLink="">logout</a>
             </li>
             <li routerLinkActive="active" class="nav-item">
-              <a class="nav-link" routerLink="/profile">My Profile</a>
+              <a class="nav-link" routerLink="/user/profile">My Profile</a>
             </li>
           </ng-container>
         </ul>

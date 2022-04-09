@@ -9,18 +9,13 @@ import { ProductsComponent } from './products/products.component';
 
 const routes: Routes = [
   {
-    path: 'products',
-    children: [
-      {
-        path: '',
-        pathMatch: 'full',
-        component: ProductsComponent
-      },
-      {
-        path: ':productId',
-        component: ProductDetailsComponent
-      }
-    ]
+    path: '',
+    pathMatch: 'full',
+    component: ProductsComponent
+  },
+  {
+    path: ':productId',
+    component: ProductDetailsComponent
   },
   {
     path: 'create',

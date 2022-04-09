@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IProduct } from 'src/app/shared/interfaces/product';
-import { UserService } from 'src/app/user/user.service';
-import { ProductsService } from '../products.service';
+import { UserService } from 'src/app/core/services/user.service';
+import { ProductsService } from '../../core/services/products.service';
 
 @Component({
   selector: 'app-product-details',
@@ -36,8 +36,7 @@ export class ProductDetailsComponent {
 
   removeProduct(id: string): void {
     if (!this.isOwner) {
-      this.router.navigate([`/products`]); //add error handler component
-      console.log('Only owner can remove a product')
+      this.router.navigate([`/error`], { queryParams: { error: 'Only owner can remove a product' } });
       return;
     }
 
@@ -53,19 +52,18 @@ export class ProductDetailsComponent {
 
   orderProduct(form: NgForm): void {
     if (!this.isLogged) {
-      this.router.navigate([`/login`]);
+      this.router.navigate([`/user/login`]);
       return;
     }
 
     if (this.isOwner) {
-      this.router.navigate([`/products`]); //add error handler component
-      console.log('Owner cannot order their own products!');
+      this.router.navigate([`/error`], { queryParams: { error: 'Owner cannot order their own products!' } });
       return;
     }
 
     this.productsService.orderProduct(this.id, form.value).subscribe({
       next: (product) => {
-        this.router.navigate(['/order-confirmation']);
+        this.router.navigate(['/products/order-confirmation']);
       },
       error: (err) => {
         console.log(err);

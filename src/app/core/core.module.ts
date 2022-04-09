@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
+import { errorInterceptor } from './error-handler';
 
 
 
@@ -18,6 +19,9 @@ import { RouterModule } from '@angular/router';
   exports: [
     HeaderComponent,
     FooterComponent
+  ],
+  providers: [
+    errorInterceptor
   ]
 })
 export class CoreModule { }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { UserService } from 'src/app/user/user.service';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
       return true;
     }
 
-    return this.router.createUrlTree(['/login'], {
+    return this.router.createUrlTree(['/user/login'], {
       queryParams: {
         'redirect-to': '/' + route.url.map(f => f.path).join('/')
       }

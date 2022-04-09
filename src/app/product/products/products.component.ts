@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IProduct } from 'src/app/shared/interfaces/product';
-import { ProductsService } from '../products.service';
+import { ProductsService } from '../../core/services/products.service';
 
 @Component({
   selector: 'app-products',

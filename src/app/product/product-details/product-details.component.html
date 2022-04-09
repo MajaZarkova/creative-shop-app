@@ -46,7 +46,7 @@
                         </ng-container>
 
                         <ng-container *ngIf="isOwner">
-                            <button class="button" routerLink="/edit/{{product!._id}}">Edit product</button>
+                            <button class="button" routerLink="/products/edit/{{product!._id}}">Edit product</button>
                             <button class="remove-button" (click)="removeProduct(product!._id)">Remove
                                 product</button>
                         </ng-container>
@@ -54,7 +54,7 @@
                     </ng-container>
 
                     <ng-container *ngIf="!isLogged">
-                        <h4><button class="button" routerLink="/login">Login</button> to make your order! </h4>
+                        <h4><button class="button" routerLink="/user/login">Login</button> to make your order! </h4>
                     </ng-container>
 
                     <div class="down-content">

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserService } from './user/user.service';
+import { UserService } from './core/services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +11,9 @@ export class AppComponent {
 
   constructor(private userService: UserService) {
     this.userService.getUserProfile().subscribe({
-      error: () => {
+      error: (error) => {
         this.userService.user = null;
+        throw error;
       }
     });
   }
