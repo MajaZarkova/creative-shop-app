@@ -19,9 +19,9 @@ import { errorInterceptor } from './error-handler';
   exports: [
     HeaderComponent,
     FooterComponent
+  ],
+  providers: [
+    errorInterceptor
   ]
-  // providers: [
-  //   errorInterceptor
-  // ]
 })
 export class CoreModule { }
