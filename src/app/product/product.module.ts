@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { UserService } from '../user/user.service';
 import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
+import { RemoveConfirmationComponent } from './remove-confirmation/remove-confirmation.component';
 
 
 
@@ -18,7 +19,8 @@ import { OrderConfirmationComponent } from './order-confirmation/order-confirmat
     ProductDetailsComponent,
     CreateProductComponent,
     EditProductComponent,
-    OrderConfirmationComponent
+    OrderConfirmationComponent,
+    RemoveConfirmationComponent
   ],
   imports: [
     CommonModule,

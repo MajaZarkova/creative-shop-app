@@ -20,5 +20,8 @@ import { errorInterceptor } from './error-handler';
     HeaderComponent,
     FooterComponent
   ]
+  // providers: [
+  //   errorInterceptor
+  // ]
 })
 export class CoreModule { }

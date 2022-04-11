@@ -36,14 +36,13 @@ export class ProductDetailsComponent {
 
   removeProduct(id: string): void {
     if (!this.isOwner) {
-      this.router.navigate([`/products`]); //add error handler component
-      console.log('Only owner can remove a product')
+      this.router.navigate([`/error`], { queryParams: { error: 'Only owner can remove a product' } });
       return;
     }
 
     this.productsService.removeProduct(id).subscribe({
       next: (product) => {
-        this.router.navigate(['/products']);
+        this.router.navigate(['/remove-confirmation']);
       },
       error: (err) => {
         console.log(err);
@@ -58,12 +57,13 @@ export class ProductDetailsComponent {
     }
 
     if (this.isOwner) {
-      this.router.navigate([`/products`]); //add error handler component
-      console.log('Owner cannot order their own products!');
+      this.router.navigate([`/error`], {queryParams: {error: 'Owner cannot order their own products!'}});
       return;
     }
 
-    this.productsService.orderProduct(this.id, this.userService.user!._id, form.value).subscribe({
+    if (form.invalid) { return; }
+
+    this.productsService.orderProduct(this.id, form.value).subscribe({
       next: (product) => {
         this.router.navigate(['/order-confirmation']);
       },

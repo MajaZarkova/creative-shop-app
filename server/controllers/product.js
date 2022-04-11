@@ -31,18 +31,19 @@ router.get('/products/:id', async (req, res) => {
     res.status(200).json(product);
 });
 
-router.get('/user/products/:userId', auth(), async (req, res) => {
-    const userId = req.params.userId;
+router.get('/user/products', auth(), async (req, res) => {
+    const {_id: userId} = req.user;
     const products = await getUserProducts(userId);
     res.status(200).json(products);
 })
 
-router.post('/products', async (req, res) => {
+router.post('/products', auth(), async (req, res) => {
+    const {_id: userId} = req.user;
     const data = {
         productName: req.body.productName,
         description: req.body.description,
         price: req.body.price,
-        seller: req.session.user?._id,
+        seller: userId,
         image: req.body.image,
         quantity: req.body.quantity,
         category: req.body.category,
@@ -69,11 +70,12 @@ router.delete('/delete/:id', auth(), async (req, res) => {
 
 router.put('/edit/:id', auth(), async (req, res) => {
     const productId = req.params.id;
+    const {_id: userId} = req.user;
     const data = {
         productName: req.body.productName,
         description: req.body.description,
         price: req.body.price,
-        seller: req.session.user?._id,
+        seller: userId,
         image: req.body.image,
         quantity: req.body.quantity,
         category: req.body.category,
@@ -86,9 +88,9 @@ router.put('/edit/:id', auth(), async (req, res) => {
     }
 })
 
-router.put('/order/:id/:userId', auth(), async (req, res) => {
+router.put('/order/:id', auth(), async (req, res) => {
     const productId = req.params.id;
-    const userId = req.params.userId;
+    const {_id: userId} = req.user;
     const value = req.body.quantity;
 
     try {

@@ -43,6 +43,8 @@ export class EditProductComponent {
       return;
     }
 
+    if (form.invalid) { return; };
+
     this.productsService.editProduct(this.id, form.value).subscribe({
       next: (product) => {
         this.router.navigate([`/products/${this.id}`]);

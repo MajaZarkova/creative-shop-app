@@ -13,15 +13,20 @@ export class ProfileComponent {
   get user() {
     return this.userService.user;
   } 
+
+  isLoading = true;
+
   productsListed: IProduct[] | undefined = undefined;
 
   constructor(private userService: UserService, private productsService: ProductsService) {
+    this.userService.getUserProfile().subscribe(() => {
+      this.isLoading = false;
+    })
     this.fetchUserProducts();
   }
 
   fetchUserProducts(): void {
-    const userId = this.user!._id;
-    this.productsService.loadUserProducts(userId).subscribe(products => this.productsListed = products);
+    this.productsService.loadUserProducts().subscribe(products => this.productsListed = products);
   }
 
 }

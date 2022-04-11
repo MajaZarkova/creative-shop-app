@@ -67,7 +67,7 @@
                                     </ng-container>
 
                                     <label for="quantity">Quantity</label>
-                                    <input name="quantity" type="quantity" class="form-control" id="quantity"
+                                    <input name="quantity" type="number" class="form-control" id="quantity"
                                         placeholder="0" #quantity="ngModel" ngModel required min="1">
 
                                     <ng-container *ngIf="quantity.touched" && quantity.invalid>

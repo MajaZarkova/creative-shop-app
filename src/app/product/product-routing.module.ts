@@ -6,6 +6,7 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductsComponent } from './products/products.component';
+import { RemoveConfirmationComponent } from './remove-confirmation/remove-confirmation.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,11 @@ const routes: Routes = [
   {
     path: 'order-confirmation',
     component: OrderConfirmationComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'remove-confirmation',
+    component: RemoveConfirmationComponent,
     canActivate: [AuthGuard]
   }
 ];
