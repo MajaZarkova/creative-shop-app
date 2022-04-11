@@ -58,6 +58,16 @@ h6 {
 	outline: none;
 }
 
+.create-product-form .main-content form select {
+	width: 100%;
+	height: 46px;
+	border: 1px solid #3a8bcd;
+	background-color: transparent;
+	/* padding-left: 15px; */
+	color: black;
+	outline: none;
+}
+
 .create-product-form .main-content form textarea {
 	width: 100%;
 	height: 120px;

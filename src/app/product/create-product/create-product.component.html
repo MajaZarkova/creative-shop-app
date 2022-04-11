@@ -80,8 +80,12 @@
                                     </ng-container>
 
                                     <label for="category">Category</label>
-                                    <input name="category" type="text" class="form-control" id="category"
-                                        placeholder="Woman" #category="ngModel" ngModel required>
+                                    <select name="category" type="text" class="form-control" id="category"
+                                        placeholder="Women, Men or Unisex?" #category="ngModel" ngModel required>
+                                        <option value="Women">Women</option>
+                                        <option value="Men">Men</option>
+                                        <option value="Unisex">Unisex</option>
+                                    </select>
 
                                     <ng-container *ngIf="category.touched" && category.invalid>
                                         <p *ngIf="category.errors?.['required']" class="error">

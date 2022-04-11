@@ -10,7 +10,8 @@
             <div class="col-md-8 offset-md-2">
                 <div class="main-content">
                     <div class="container">
-                        <form *ngIf="product" #form="ngForm" id="subscribe" action="" method="get" (ngSubmit)="editProduct(form)">
+                        <form *ngIf="product" #form="ngForm" id="subscribe" action="" method="get"
+                            (ngSubmit)="editProduct(form)">
                             <div class="editForm">
                                 <div class="col-md-7">
                                     <label for="productName">Product Name</label>
@@ -80,8 +81,12 @@
                                     </ng-container>
 
                                     <label for="category">Category</label>
-                                    <input name="category" type="text" class="form-control" id="category"
+                                    <select name="category" type="text" class="form-control" id="category"
                                         #category="ngModel" [(ngModel)]="product!.category" required>
+                                        <option value="Women">Women</option>
+                                        <option value="Men">Men</option>
+                                        <option value="Unisex">Unisex</option>
+                                    </select>
 
                                     <ng-container *ngIf="category.touched" && category.invalid>
                                         <p *ngIf="category.errors?.['required']" class="error">
