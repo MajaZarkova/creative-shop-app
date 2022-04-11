@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IProduct } from 'src/app/shared/interfaces/product';
 import { UserService } from 'src/app/core/services/user.service';
-import { ProductsService } from '../products.service';
+import { ProductsService } from '../../core/services/products.service';
 
 @Component({
   selector: 'app-product-details',

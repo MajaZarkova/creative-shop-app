@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { UserService } from '../core/services/user.service';
 import { PasswordCheckDirective } from './password-check.directive';
 import { ProfileComponent } from './profile/profile.component';
-import { ProductsService } from '../product/products.service';
+import { ProductsService } from '../core/services/products.service';
 
 
 
