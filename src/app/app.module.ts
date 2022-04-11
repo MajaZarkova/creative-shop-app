@@ -11,7 +11,7 @@ import { AboutComponent } from './about/about.component';
 import { UserModule } from './user/user.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsService } from './product/products.service';
-import { UserService } from './user/user.service';
+import { UserService } from './core/services/user.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ErrorComponent } from './error/error.component';
 

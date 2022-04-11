@@ -5,7 +5,7 @@ import { UserRoutingModule } from './user-routing.module';
 import { RouterModule } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
-import { UserService } from './user.service';
+import { UserService } from '../core/services/user.service';
 import { PasswordCheckDirective } from './password-check.directive';
 import { ProfileComponent } from './profile/profile.component';
 import { ProductsService } from '../product/products.service';

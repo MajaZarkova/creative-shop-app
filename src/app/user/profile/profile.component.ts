@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductsService } from 'src/app/product/products.service';
 import { IProduct } from 'src/app/shared/interfaces/product';
-import { UserService } from '../user.service';
+import { UserService } from '../../core/services/user.service';
 
 @Component({
   selector: 'app-profile',
