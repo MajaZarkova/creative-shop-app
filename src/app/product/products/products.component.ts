@@ -12,6 +12,7 @@ export class ProductsComponent {
 
   products: IProduct[] | undefined;
   allProducts: IProduct[] | undefined;
+  search = '';
 
   constructor(private router: Router, private productsService: ProductsService) {
     this.fetchProducts();

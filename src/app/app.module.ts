@@ -14,6 +14,7 @@ import { ProductsService } from './core/services/products.service';
 import { UserService } from './core/services/user.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ErrorComponent } from './error/error.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ErrorComponent } from './error/error.component';
     RouterModule,
     HttpClientModule,
     CoreModule,
+    SharedModule,
     ProductModule,
     UserModule,
     AppRoutingModule

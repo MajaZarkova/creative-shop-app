@@ -10,6 +10,7 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { UserService } from '../core/services/user.service';
 import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
 import { RemoveConfirmationComponent } from './remove-confirmation/remove-confirmation.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -25,6 +26,7 @@ import { RemoveConfirmationComponent } from './remove-confirmation/remove-confir
   imports: [
     CommonModule,
     ProductRoutingModule,
+    SharedModule,
     FormsModule
   ],
   providers: [

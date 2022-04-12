@@ -12,35 +12,31 @@
                     <div class="container">
                         <form #form="ngForm" id="subscribe" action="" method="get" (ngSubmit)="loginUser(form)">
                             <div class="loginForm">
-                                <div class="col-md-7">
-                                    <label for="email">Email</label>
-                                    <input name="email" type="text" class="form-control" id="email"
-                                        placeholder="example@example.com" ngModel #email="ngModel" required email>
+                                <label for="email">Email</label>
+                                <input name="email" type="text" class="form-control" id="email"
+                                    placeholder="example@example.com" ngModel #email="ngModel" required email>
 
-                                    <ng-container *ngIf="email.touched" && email.invalid>
-                                        <p *ngIf="email.errors?.['required']" class="error">
-                                            Email is required!
-                                        </p>
-                                        <p *ngIf="email.errors?.['email']" class="error">
-                                            Email is not valid!
-                                        </p>
-                                    </ng-container>
+                                <ng-container *ngIf="email.touched" && email.invalid>
+                                    <p *ngIf="email.errors?.['required']" class="error">
+                                        Email is required!
+                                    </p>
+                                    <p *ngIf="email.errors?.['email']" class="error">
+                                        Email is not valid!
+                                    </p>
+                                </ng-container>
 
-                                    <label for="password">Password</label>
-                                    <input name="password" type="password" class="form-control" id="password"
-                                        placeholder="*******" ngModel #password="ngModel" required>
+                                <label for="password">Password</label>
+                                <input name="password" type="password" class="form-control" id="password"
+                                    placeholder="*******" ngModel #password="ngModel" required>
 
-                                    <ng-container *ngIf="password.touched" && password.invalid>
-                                        <p *ngIf="password.errors?.['required']" class="error">
-                                            Password is required!
-                                        </p>
-                                    </ng-container>
-                                </div>
-                                <div class="col-md-5">
-                                    <fieldset>
-                                        <button type="submit" id="form-submit" class="button">Login</button>
-                                    </fieldset>
-                                </div>
+                                <ng-container *ngIf="password.touched" && password.invalid>
+                                    <p *ngIf="password.errors?.['required']" class="error">
+                                        Password is required!
+                                    </p>
+                                </ng-container>
+                                <fieldset>
+                                    <button type="submit" id="form-submit" class="button">Login</button>
+                                </fieldset>
                             </div>
                             <h6>Don't have an account? <a routerLink="/register">Register here!</a></h6>
                         </form>
