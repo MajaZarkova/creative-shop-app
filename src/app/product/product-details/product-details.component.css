@@ -1,6 +1,7 @@
 img {
-	width: 500px;
-	height: 400px;
+	/* width: 500px;
+	height: 400px; */
+	width: -webkit-fill-available;
 }
 
 .single-product .product-slider {
@@ -12,6 +13,9 @@ img {
 .flexslider {
 	border: none!important;
 	align-items: center;
+}
+.right-content {
+	padding-top: 5%;
 }
 .single-product .right-content h4 {
 	font-size: 17px;
