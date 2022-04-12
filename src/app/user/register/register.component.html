@@ -12,7 +12,6 @@
                     <div class="container">
                         <form #form="ngForm" id="subscribe" action="" method="get" (ngSubmit)="registerUser(form)">
                             <div class="registerForm">
-                                <div class="col-md-7">
                                     <label for="firstName">First Name</label>
                                     <input name="firstName" type="text" class="form-control" id="firstName"
                                         placeholder="First Name..." #firstName="ngModel" ngModel required minlength="3">
@@ -83,12 +82,9 @@
                                             Passwords don't match!
                                         </p>
                                     </ng-container>
-                                </div>
-                                <div class="col-md-5">
                                     <fieldset>
                                         <button id="form-submit" class="button">Register</button>
                                     </fieldset>
-                                </div>
                             </div>
                             <h6>Already have an account? <a routerLink="/login">Login here!</a></h6>
                         </form>
