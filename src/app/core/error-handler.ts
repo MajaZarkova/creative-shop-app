@@ -17,7 +17,7 @@ class ErrorHandlerInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(req).pipe(catchError(err => {
             if (err.message !== 'Http failure response for http://localhost:3000/user/profile: 401 Unauthorized') {
-                this.router.navigate(['/error'], { queryParams: { error: err.message } })
+                this.router.navigate(['/error'], { queryParams: { error: err.error[0].msg ? err.error[0].msg : err.message } })
                 return throwError(err);
             }
             return throwError(err);
