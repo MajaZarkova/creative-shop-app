@@ -21,11 +21,6 @@
                     <h6>{{user!.email}}</h6>
                     <span>{{user!.orders.length}} orders made!</span><br>
                     <span>{{productsListed!.length}} products listed!</span>
-                    <!-- <button class="button" routerLink="/edit/{{product!._id}}">Edit product</button>
-                    <button class="remove-button" (click)="removeProduct(product!._id)">Remove product</button>
-                    <div class="down-content">
-                    </div>
-                    <button class="button" routerLink="/products">Back to products</button> -->
                 </div>
             </div>
             <div class="featured-items">
@@ -42,7 +37,7 @@
                                 <a *ngFor="let product of user!.orders" routerLink="/products/{{product!._id}}">
                                     <div class="featured-item">
                                         <img src="{{product!.image}}" alt="Item 1">
-                                        <h4>{{product!.productName}}</h4>
+                                        <h4>{{product!.productName | titlecase}}</h4>
                                         <h6>${{product!.price}}</h6>
                                     </div>
                                 </a>
@@ -69,7 +64,7 @@
                                     <a routerLink="/products/{{product._id}}">
                                         <div class="featured-item">
                                             <img src="{{product.image}}" alt="">
-                                            <h4>{{product.productName}}</h4>
+                                            <h4>{{product.productName | titlecase}}</h4>
                                             <h6>${{product.price}}</h6>
                                         </div>
                                     </a>

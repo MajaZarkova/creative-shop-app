@@ -31,7 +31,7 @@
                     <a *ngFor="let product of recentProducts" routerLink="/products/{{product._id}}">
                         <div class="featured-item">
                             <img src="{{product.image}}" alt="Item 1">
-                            <h4>{{product.productName}}</h4>
+                            <h4>{{product.productName | titlecase}}</h4>
                             <h6>${{product.price}}</h6>
                         </div>
                     </a>

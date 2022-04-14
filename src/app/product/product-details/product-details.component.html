@@ -16,7 +16,7 @@
             </div>
             <div class="col-md-6" *ngIf="product">
                 <div class="right-content">
-                    <h4>{{product!.productName}}</h4>
+                    <h4>{{product!.productName | titlecase}}</h4>
                     <h6>${{product!.price}}</h6>
                     <p>{{product!.description}}</p>
 
