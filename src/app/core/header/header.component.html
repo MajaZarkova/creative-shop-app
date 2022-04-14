@@ -14,42 +14,90 @@
       <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button> -->
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li routerLinkActive="active" class="nav-item">
-            <a class="nav-link" routerLink="/home">Home</a>
-          </li>
-          <li routerLinkActive="active" class="nav-item">
-            <a class="nav-link" routerLink="/products">Products</a>
-          </li>
-          <li routerLinkActive="active" class="nav-item">
-            <a class="nav-link" routerLink="/about">About</a>
-          </li>
-          <li class="nav-item">
-            <!-- <a class="nav-link" href="#"></a> -->
-          </li>
-          <ng-container *ngIf="!isLogged">
+      <!-- <div class="collapse navbar-collapse" id="navbarResponsive"> -->
+      <mat-toolbar color="primary">
+        <div fxShow="true" fxHide.lt-md="true">
+          <ul class="navbar-nav ml-auto">
             <li routerLinkActive="active" class="nav-item">
-              <a class="nav-link" routerLink="/login">Login</a>
+              <a class="nav-link" routerLink="/home">Home</a>
             </li>
             <li routerLinkActive="active" class="nav-item">
-              <a class="nav-link" routerLink="/register">Register</a>
+              <a class="nav-link" routerLink="/products">Products</a>
             </li>
-          </ng-container>
+            <li routerLinkActive="active" class="nav-item">
+              <a class="nav-link" routerLink="/about">About</a>
+            </li>
+            <li class="nav-item">
+              <!-- <a class="nav-link" href="#"></a> -->
+            </li>
+            <ng-container *ngIf="!isLogged">
+              <li routerLinkActive="active" class="nav-item">
+                <a class="nav-link" routerLink="/login">Login</a>
+              </li>
+              <li routerLinkActive="active" class="nav-item">
+                <a class="nav-link" routerLink="/register">Register</a>
+              </li>
+            </ng-container>
 
-          <ng-container *ngIf="isLogged">
-            <li routerLinkActive="active" class="nav-item">
-              <a class="nav-link" routerLink="/create">Create</a>
-            </li>
-            <li class="nav-item" (click)="logout()">
-              <a class="nav-link" routerLink="">logout</a>
-            </li>
-            <li routerLinkActive="active" class="nav-item">
-              <a class="nav-link" routerLink="/profile">My Profile</a>
-            </li>
-          </ng-container>
-        </ul>
-      </div>
+            <ng-container *ngIf="isLogged">
+              <li routerLinkActive="active" class="nav-item">
+                <a class="nav-link" routerLink="/create">Create</a>
+              </li>
+              <li class="nav-item" (click)="logout()">
+                <a class="nav-link" routerLink="">logout</a>
+              </li>
+              <li routerLinkActive="active" class="nav-item">
+                <a class="nav-link" routerLink="/profile">My Profile</a>
+              </li>
+            </ng-container>
+          </ul>
+        </div>
+        <div fxShow="true" fxHide.gt-sm="true" class="navbar-nav nav-item showButtonClass">
+          <a routerLink="" class="nav-link" (click)="sidenav.toggle()">Show Side Menu</a>
+        </div>
+      </mat-toolbar>
+      <!-- </div> -->
+      <!-- <mat-sidenav-container fxFlexFill class="example-container"> -->
+        <mat-sidenav #sidenav fxLayout="column">
+          <div fxLayout="column">
+            <!-- <a (click)="sidenav.toggle()" mat-button>Close</a> -->
+            <ul class="navbar-nav ml-auto">
+              <li routerLinkActive="active" class="nav-item">
+                <a class="nav-link" routerLink="/home">Home</a>
+              </li>
+              <li routerLinkActive="active" class="nav-item">
+                <a class="nav-link" routerLink="/products">Products</a>
+              </li>
+              <li routerLinkActive="active" class="nav-item">
+                <a class="nav-link" routerLink="/about">About</a>
+              </li>
+              <li class="nav-item">
+                <!-- <a class="nav-link" href="#"></a> -->
+              </li>
+              <ng-container *ngIf="!isLogged">
+                <li routerLinkActive="active" class="nav-item">
+                  <a class="nav-link" routerLink="/login">Login</a>
+                </li>
+                <li routerLinkActive="active" class="nav-item">
+                  <a class="nav-link" routerLink="/register">Register</a>
+                </li>
+              </ng-container>
+
+              <ng-container *ngIf="isLogged">
+                <li routerLinkActive="active" class="nav-item">
+                  <a class="nav-link" routerLink="/create">Create</a>
+                </li>
+                <li class="nav-item" (click)="logout()">
+                  <a class="nav-link" routerLink="">logout</a>
+                </li>
+                <li routerLinkActive="active" class="nav-item">
+                  <a class="nav-link" routerLink="/profile">My Profile</a>
+                </li>
+              </ng-container>
+            </ul>
+          </div>
+        </mat-sidenav>
+      <!-- </mat-sidenav-container> -->
     </div>
   </nav>
 </header>
