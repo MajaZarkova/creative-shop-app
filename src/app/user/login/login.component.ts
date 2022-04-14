@@ -13,6 +13,7 @@ export class LoginComponent {
   constructor(private userService: UserService, private router: Router) { }
 
   loginUser(userForm: NgForm): void {
+    if (userForm.invalid) { return; };
     this.userService.login(userForm.value).subscribe({
       next: (user) => {
         this.router.navigate(['/home']);

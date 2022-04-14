@@ -13,6 +13,7 @@ export class RegisterComponent {
   constructor(private userService: UserService, private router: Router) { }
 
   registerUser(userForm: NgForm): void {
+    if (userForm.invalid) { return; };
     const {firstName, lastName, email, passwords} = userForm.value;
     
     const body: {firstName: string; lastName: string; email: string; password: string; rePassword: string} = {

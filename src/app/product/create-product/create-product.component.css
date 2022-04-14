@@ -104,7 +104,7 @@ h6 {
 
 button {
     margin-top: 20%;
-    margin-left: 23%;
+    /* margin-left: 23%; */
     position: relative;
 }
 
@@ -138,7 +138,7 @@ button {
 fieldset {
     display: flex;
     width: 100%;
-    margin-left: 50%;
+    /* margin-left: 50%; */
 }
 
 p.error {
