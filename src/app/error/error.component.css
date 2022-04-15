@@ -1,18 +1,17 @@
 .mainbox {
     margin: auto;
     height: 550px;
-    width: 650px;
+    /* width: 650px; */
+    width: fit-content;
     position: relative;
-    padding-left: 8%;
   }
     
   .text {
     color: #95c2de;
     font-family: 'Nunito Sans', sans-serif;
     font-size: 2rem;
-    position:absolute;
+    position: relative;
     text-align: center;
-    left: 20%;
     top: 20%;
   }
     

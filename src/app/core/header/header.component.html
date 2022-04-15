@@ -52,51 +52,56 @@
             </ng-container>
           </ul>
         </div>
-        <div fxShow="true" fxHide.gt-sm="true" class="navbar-nav nav-item showButtonClass">
-          <a routerLink="" class="nav-link" (click)="sidenav.toggle()">Show Side Menu</a>
-        </div>
+        <!-- <div fxShow="true" fxHide.gt-sm="true" class="navbar-nav nav-item showButtonClass">
+          <a routerLink="" class="nav-link" (click)="sidenav.toggle()">Show Menu</a>
+        </div> -->
+        <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+          <mat-icon>Menu</mat-icon>
+        </button>
       </mat-toolbar>
       <!-- </div> -->
-      <!-- <mat-sidenav-container fxFlexFill class="example-container"> -->
-        <mat-sidenav #sidenav fxLayout="column">
-          <div fxLayout="column">
-            <!-- <a (click)="sidenav.toggle()" mat-button>Close</a> -->
-            <ul class="navbar-nav ml-auto">
+      <!-- <mat-sidenav-container fxFlexFill> -->
+      <mat-sidenav #sidenav fxLayout="column">
+        <div fxLayout="column">
+          <ul class="navbar-nav ml-auto">
+            <li routerLinkActive="active" class="nav-item">
+              <a class="nav-link" routerLink="/home">Home</a>
+            </li>
+            <li routerLinkActive="active" class="nav-item">
+              <a class="nav-link" routerLink="/products">Products</a>
+            </li>
+            <li routerLinkActive="active" class="nav-item">
+              <a class="nav-link" routerLink="/about">About</a>
+            </li>
+            <li class="nav-item">
+              <!-- <a class="nav-link" href="#"></a> -->
+            </li>
+            <ng-container *ngIf="!isLogged">
               <li routerLinkActive="active" class="nav-item">
-                <a class="nav-link" routerLink="/home">Home</a>
+                <a class="nav-link" routerLink="/login">Login</a>
               </li>
               <li routerLinkActive="active" class="nav-item">
-                <a class="nav-link" routerLink="/products">Products</a>
+                <a class="nav-link" routerLink="/register">Register</a>
               </li>
-              <li routerLinkActive="active" class="nav-item">
-                <a class="nav-link" routerLink="/about">About</a>
-              </li>
-              <li class="nav-item">
-                <!-- <a class="nav-link" href="#"></a> -->
-              </li>
-              <ng-container *ngIf="!isLogged">
-                <li routerLinkActive="active" class="nav-item">
-                  <a class="nav-link" routerLink="/login">Login</a>
-                </li>
-                <li routerLinkActive="active" class="nav-item">
-                  <a class="nav-link" routerLink="/register">Register</a>
-                </li>
-              </ng-container>
+            </ng-container>
 
-              <ng-container *ngIf="isLogged">
-                <li routerLinkActive="active" class="nav-item">
-                  <a class="nav-link" routerLink="/create">Create</a>
-                </li>
-                <li class="nav-item" (click)="logout()">
-                  <a class="nav-link" routerLink="">logout</a>
-                </li>
-                <li routerLinkActive="active" class="nav-item">
-                  <a class="nav-link" routerLink="/profile">My Profile</a>
-                </li>
-              </ng-container>
-            </ul>
-          </div>
-        </mat-sidenav>
+            <ng-container *ngIf="isLogged">
+              <li routerLinkActive="active" class="nav-item">
+                <a class="nav-link" routerLink="/create">Create</a>
+              </li>
+              <li class="nav-item" (click)="logout()">
+                <a class="nav-link" routerLink="">logout</a>
+              </li>
+              <li routerLinkActive="active" class="nav-item">
+                <a class="nav-link" routerLink="/profile">My Profile</a>
+              </li>
+            </ng-container>
+            <li routerLinkActive="active" class="nav-item">
+              <a class="nav-link" (click)="sidenav.toggle()" mat-button>Close</a>
+            </li>
+          </ul>
+        </div>
+      </mat-sidenav>
       <!-- </mat-sidenav-container> -->
     </div>
   </nav>
