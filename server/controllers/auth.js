@@ -17,12 +17,15 @@ router.post('/register', async (req, res) => {
         if (password != rePassword) {
             throw new Error('Passwords don\'t match');
         }
-
+        console.log(firstName);
+        console.log(lastName);
+        console.log(email);
+        console.log(password);
         const user = await register(firstName, lastName, email, password);
+        console.log(user);
         const token = jwt.createToken({ id: user._id });
 
-        res.cookie(authCookieName, token, { httpOnly: true });
-        req.session.user = user;
+        res.cookie(authCookieName, token, { httpOnly: true }); 
         res.status(200).send(user);
     } catch (err) {
         console.log(mapErrors(err));
