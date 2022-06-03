@@ -16,6 +16,21 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ErrorComponent } from './error/error.component';
 import { SharedModule } from './shared/shared.module';
 
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBLzbri9Q9ag8GoDWR2TjAdDwvCGHPv8ns",
+  authDomain: "creative-shop-1da0d.firebaseapp.com",
+  projectId: "creative-shop-1da0d",
+  storageBucket: "creative-shop-1da0d.appspot.com",
+  messagingSenderId: "40024302885",
+  appId: "1:40024302885:web:e7cf501ff1f47b498b26cc",
+  measurementId: "G-3CBXE636K8"
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +47,11 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
     ProductModule,
     UserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireAuthModule
   ],
   providers: [
     ProductsService,
