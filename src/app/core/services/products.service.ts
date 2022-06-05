@@ -1,20 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IProduct } from '../../shared/interfaces/product';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private db: AngularFirestore) { }
 
   loadProducts() {
-    return this.http.get<IProduct[]>('http://localhost:3000/products');
+  //  return this.http.get<IProduct[]>('http://localhost:3000/products');
+    return this.db.collection('products').valueChanges({ idField: '_id' }) as Observable<IProduct[]>;
   }
 
   loadOneProduct(id: string) {
-    return this.http.get<IProduct>(`http://localhost:3000/products/${id}`);
+  //  return this.http.get<IProduct>(`http://localhost:3000/products/${id}`);
+    return this.db.doc<IProduct>(`products/${id}`).valueChanges({idField: '_id'});
   }
 
   loadRecentProducts(limit?: number) {
