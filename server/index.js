@@ -15,7 +15,7 @@ async function start() {
     app.use(cookieParser(cookieSecret));
     app.use('/static', express.static('static'));
     app.use(cors({
-        origin: ['http://localhost:5555', 'http://localhost:4200', 'https://creative-shop-1da0d.web.app'],
+        origin: ['http://localhost:5555', 'http://localhost:4200', 'https://creative-shop-1da0d.web.app', 'https://creative-shop-1da0d.firebaseapp.com'],
         credentials: true
       }));
   
