@@ -14,9 +14,9 @@ export class ProductDetailsComponent {
 
   product: IProduct | undefined;
   private id = this.activatedRoute.snapshot.params['productId'];
-  get isOwner(): boolean {
-    return this.userService.user?._id == this.product?.seller._id;
-  }
+  // get isOwner(): boolean {
+  //   return this.userService.user?._id == this.product?.seller._id;
+  // }
 
   get isLogged(): boolean {
     return this.userService.isLogged;
@@ -35,18 +35,24 @@ export class ProductDetailsComponent {
   }
 
   removeProduct(id: string): void {
-    if (!this.isOwner) {
-      this.router.navigate([`/error`], { queryParams: { error: 'Only owner can remove a product' } });
-      return;
-    }
+    // if (!this.isOwner) {
+    //   this.router.navigate([`/error`], { queryParams: { error: 'Only owner can remove a product' } });
+    //   return;
+    // }
 
-    this.productsService.removeProduct(id).subscribe({
-      next: (product) => {
-        this.router.navigate(['/remove-confirmation']);
-      },
-      error: (err) => {
-        console.log(err);
-      }
+    // this.productsService.removeProduct(id).subscribe({
+    //   next: (product) => {
+    //     this.router.navigate(['/remove-confirmation']);
+    //   },
+    //   error: (err) => {
+    //     console.log(err);
+    //   }
+    // })
+
+    this.productsService.removeProduct(id).then((res) => {
+      this.router.navigate(['/remove-confirmation']);
+    }).catch(err => {
+      console.log(err)
     })
   }
 
@@ -56,10 +62,10 @@ export class ProductDetailsComponent {
       return;
     }
 
-    if (this.isOwner) {
-      this.router.navigate([`/error`], {queryParams: {error: 'Owner cannot order their own products!'}});
-      return;
-    }
+    // if (this.isOwner) {
+    //   this.router.navigate([`/error`], {queryParams: {error: 'Owner cannot order their own products!'}});
+    //   return;
+    // }
 
     if (form.invalid) { return; }
 

@@ -38,11 +38,13 @@ export class ProductsService {
   }
 
   removeProduct(id: string) {
-    return this.http.delete(`http://localhost:3000/delete/${id}`, { withCredentials: true });
+    //  return this.http.delete(`http://localhost:3000/delete/${id}`, { withCredentials: true });
+    return this.db.collection('products').doc(id).delete();
   }
 
   editProduct(id: string, data: { productName: string; description: string; price: number; image: string; quantity: number; category: string }) {
-    return this.http.put<IProduct>(`http://localhost:3000/edit/${id}`, data, { withCredentials: true });
+    //  return this.http.put<IProduct>(`http://localhost:3000/edit/${id}`, data, { withCredentials: true });
+    return this.db.collection('products').doc(id).update(data);
   }
 
   orderProduct(id: string, data: { quantity: number }) {

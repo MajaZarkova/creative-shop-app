@@ -19,9 +19,9 @@ export class EditProductComponent {
     return this.userService.user;
   }
 
-  get isOwner(): boolean {
-    return this.userService.user?._id == this.product?.seller._id;
-  }
+  // get isOwner(): boolean {
+  //   return this.userService.user?._id == this.product?.seller._id;
+  // }
 
   constructor(private productsService: ProductsService,
     private activatedRoute: ActivatedRoute,
@@ -37,21 +37,27 @@ export class EditProductComponent {
 
   editProduct(form: NgForm): void {
 
-    if (!this.isOwner) {
-      this.router.navigate([`/products/${this.id}`]) // add error component
-      console.log('Only owner can edit a product!')
-      return;
-    }
+    // if (!this.isOwner) {
+    //   this.router.navigate([`/products/${this.id}`]) // add error component
+    //   console.log('Only owner can edit a product!')
+    //   return;
+    // }
 
     if (form.invalid) { return; };
 
-    this.productsService.editProduct(this.id, form.value).subscribe({
-      next: (product) => {
-        this.router.navigate([`/products/${this.id}`]);
-      },
-      error: (err) => {
-        console.log(err);
-      }
+    // this.productsService.editProduct(this.id, form.value).subscribe({
+    //   next: (product) => {
+    //     this.router.navigate([`/products/${this.id}`]);
+    //   },
+    //   error: (err) => {
+    //     console.log(err);
+    //   }
+    // })
+
+    this.productsService.editProduct(this.id, form.value).then((res) => {
+      this.router.navigate([`/products/${this.id}`]);
+    }).catch(err => {
+      console.log(err)
     })
   }
 

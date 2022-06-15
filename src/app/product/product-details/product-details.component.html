@@ -24,7 +24,7 @@
                     <span *ngIf="product!.quantity > 0">{{product!.quantity}} left on stock</span>
 
                     <ng-container *ngIf="isLogged">
-                        <ng-container *ngIf="!isOwner">
+                        <ng-container>
                             <form *ngIf="product!.quantity > 0" #form="ngForm" action="" method="get" (ngSubmit)="orderProduct(form)">
                                 <label for="quantity">Quantity:</label>
                                 <input name="quantity" type="number" class="quantity-text" id="quantity"
@@ -45,7 +45,7 @@
                             </form>
                         </ng-container>
 
-                        <ng-container *ngIf="isOwner">
+                        <ng-container>
                             <button class="button" routerLink="/edit/{{product!._id}}">Edit product</button>
                             <button class="remove-button" (click)="removeProduct(product!._id)">Remove
                                 product</button>
