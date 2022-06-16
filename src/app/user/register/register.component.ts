@@ -14,9 +14,9 @@ export class RegisterComponent {
 
   registerUser(userForm: NgForm): void {
     if (userForm.invalid) { return; };
-    const {firstName, lastName, email, passwords} = userForm.value;
-    
-    const body: {firstName: string; lastName: string; email: string; password: string; rePassword: string} = {
+    const { firstName, lastName, email, passwords } = userForm.value;
+
+    const body: { firstName: string; lastName: string; email: string; password: string; rePassword: string } = {
       firstName,
       lastName,
       email,
@@ -24,13 +24,19 @@ export class RegisterComponent {
       rePassword: passwords.rePassword
     }
 
-    this.userService.register(body).subscribe({
-      next: (user) => {
-        this.router.navigate(['/home']);
-      },
-      error: (error) => {
-        console.error(error);
-      }
+    // this.userService.register(body).subscribe({
+    //   next: (user) => {
+    //     this.router.navigate(['/home']);
+    //   },
+    //   error: (error) => {
+    //     console.error(error);
+    //   }
+    // })
+
+    this.userService.register(body).then(user => {
+      this.router.navigate(['/home']);
+    }).catch(err => {
+      console.error(err);
     })
   }
 

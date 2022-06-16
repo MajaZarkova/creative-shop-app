@@ -14,13 +14,19 @@ export class LoginComponent {
 
   loginUser(userForm: NgForm): void {
     if (userForm.invalid) { return; };
-    this.userService.login(userForm.value).subscribe({
-      next: (user) => {
-        this.router.navigate(['/home']);
-      },
-      error: (error) => {
-        console.error(error);
-      }
+    // this.userService.login(userForm.value).subscribe({
+    //   next: (user) => {
+    //     this.router.navigate(['/home']);
+    //   },
+    //   error: (error) => {
+    //     console.error(error);
+    //   }
+    // })
+
+    this.userService.login(userForm.value).then(user => {
+      this.router.navigate(['/home']);
+    }).catch(err => {
+      console.log(err);
     })
   }
 

@@ -20,8 +20,14 @@ export class HeaderComponent {
   constructor(private router: Router, private userService: UserService) { }
 
   logout(): void {
-    this.userService.logout().subscribe(() => {
+    // this.userService.logout().subscribe(() => {
+    //   this.router.navigate(['/']);
+    // })
+
+    this.userService.logout().then(user => {
       this.router.navigate(['/']);
+    }).catch(err => {
+      console.log(err);
     })
   }
 }
