@@ -31,7 +31,7 @@ export class ProductDetailsComponent {
 
   fetchOneProduct(): void {
     this.product = undefined;
-    this.productsService.loadOneProduct(this.id).subscribe(product => {console.log(product); this.product = product});
+    this.productsService.loadOneProduct(this.id).subscribe(product => {this.product = product});
   }
 
   removeProduct(id: string): void {
