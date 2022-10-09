@@ -1,11 +1,11 @@
 import { Directive } from '@angular/core';
-import { AbstractControl, FormGroup, NG_VALIDATORS, ValidationErrors, Validator, ValidatorFn } from '@angular/forms';
+import { AbstractControl, UntypedFormGroup, NG_VALIDATORS, ValidationErrors, Validator, ValidatorFn } from '@angular/forms';
 
 function validatePassword(): ValidatorFn {
   return (control: AbstractControl) => {
     let isValid = false;
-    if (control && control instanceof FormGroup) {
-      let group = control as FormGroup;
+    if (control && control instanceof UntypedFormGroup) {
+      let group = control as UntypedFormGroup;
       if (group.controls['password'] && group.controls['rePassword']) {
         isValid = group.controls['password'].value == group.controls['rePassword'].value;
       }
