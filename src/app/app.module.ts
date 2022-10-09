@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
@@ -14,9 +14,10 @@ import { ProductsService } from './core/services/products.service';
 import { UserService } from './core/services/user.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ErrorComponent } from './error/error.component';
-import { SharedModule } from './shared/shared.module';
+// import { SharedModule } from './shared/shared.module';
 
 import { AlertModule } from '@coreui/angular';
+import { AccordionModule, SharedModule, ButtonModule } from '@coreui/angular';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
@@ -39,7 +40,7 @@ const firebaseConfig = {
     HomeComponent,
     AboutComponent,
     NotFoundComponent,
-    ErrorComponent
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,12 +55,15 @@ const firebaseConfig = {
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
-    AlertModule
+    AlertModule,
+    AccordionModule,
+    ButtonModule,
   ],
   providers: [
     ProductsService,
-    UserService
+    UserService,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

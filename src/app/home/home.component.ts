@@ -11,6 +11,7 @@ import { IProduct } from '../shared/interfaces/product';
 export class HomeComponent {
 
   recentProducts: IProduct[] | undefined;
+  items = [1, 2, 3, 4];
 
   constructor(private router: Router, private productsService: ProductsService) { 
     this.fetchRecentProducts()
