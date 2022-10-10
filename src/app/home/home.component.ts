@@ -11,7 +11,48 @@ import { IProduct } from '../shared/interfaces/product';
 export class HomeComponent {
 
   recentProducts: IProduct[] | undefined;
-  items = [1, 2, 3, 4];
+  slides = [
+    {
+      id: "-1",
+      src: "../../assets/images/banner.jpg",
+      title: "",
+      subtitle: ""
+    },
+    {
+      id: "-1",
+      src: "../../assets/images/banner2.jpg",
+      title: "",
+      subtitle: ""
+    },
+    {
+      id: "-1",
+      src: "../../assets/images/banner3.jpg",
+      title: "",
+      subtitle: ""
+    },
+    {
+      id: "-1",
+      src: "../../assets/images/banner4.jpg",
+      title: "",
+      subtitle: ""
+    },
+  ];
+
+  categories = [
+    {name: "Men’s Clothing"},
+    {name: "Women’s Clothing"},
+    {name: "Phones and accessories"},
+    {name: "Jewelry and Watches"},
+    {name: "Computer and Office"},
+    {name: "Bags and Shoes"},
+    {name: "Health, Beauty and Hair"},
+    {name: "Sports and Outdoors"},
+    {name: "Home, Garden and Furniture"},
+    {name: "Home Improvement"},
+    {name: "Automobiles and Motorcycles"},
+    {name: "Toys, Kids and Babies"},
+    {name: "Consumer Electronics"},
+    ];
 
   constructor(private router: Router, private productsService: ProductsService) { 
     this.fetchRecentProducts()

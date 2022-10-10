@@ -1,76 +1,31 @@
 <div class="home-container">
-<c-accordion class="Accordion">
-    <c-accordion-item #item0="cAccordionItem" [visible]="false">
-      <ng-template cTemplateId="accordionHeaderTemplate">
-        <button (click)="item0.toggleItem()" [collapsed]="!item0.visible" cAccordionButton>
-          Accordion item #0
-        </button>
-      </ng-template>
-      <ng-template cTemplateId="accordionBodyTemplate">
-        <div class="accordion-body">
-          <strong>This is the first item's accordion body.</strong> It is hidden by default,
-          until the collapse plugin adds the appropriate classes that we use to style each
-          element. These classes control the overall appearance, as well as the showing and
-          hiding via CSS transitions. You can modify any of this with custom CSS or overriding
-          our default variables. It's also worth noting that just about any HTML can go within
-          the <code>.accordion-body</code>, though the transition does limit overflow.
-        </div>
-      </ng-template>
-    </c-accordion-item>
-    <c-accordion-item #item1="cAccordionItem" [visible]="false">
-      <ng-template cTemplateId="accordionHeaderTemplate">
-        <button (click)="item1.toggleItem()" [collapsed]="!item1.visible" cAccordionButton>
-          Accordion item #1
-        </button>
-      </ng-template>
-      <ng-template cTemplateId="accordionBodyTemplate">
-        <div class="accordion-body">
-          <strong>This is the second item's accordion body.</strong> It is hidden by default,
-          until the collapse plugin adds the appropriate classes that we use to style each
-          element. These classes control the overall appearance, as well as the showing and
-          hiding via CSS transitions. You can modify any of this with custom CSS or overriding
-          our default variables. It's also worth noting that just about any HTML can go within
-          the <code>.accordion-body</code>, though the transition does limit overflow.
-        </div>
-      </ng-template>
-    </c-accordion-item>
-    <c-accordion-item #item2="cAccordionItem" [visible]="false">
-      <ng-template cTemplateId="accordionHeaderTemplate">
-        <button (click)="item2.toggleItem()" [collapsed]="!item2.visible" cAccordionButton>
-          Accordion item #2
-        </button>
-      </ng-template>
-      <ng-template cTemplateId="accordionBodyTemplate">
-        <div class="accordion-body">
-          <strong>This is the third item's accordion body.</strong> It is hidden by default,
-          until the collapse plugin adds the appropriate classes that we use to style each
-          element. These classes control the overall appearance, as well as the showing and
-          hiding via CSS transitions. You can modify any of this with custom CSS or overriding
-          our default variables. It's also worth noting that just about any HTML can go within
-          the <code>.accordion-body</code>, though the transition does limit overflow.
-        </div>
-      </ng-template>
-    </c-accordion-item>
-  </c-accordion>
-
-<div class="banner">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="caption">
-                    <h2>Creative Shop</h2>
-                    <div class="line-dec"></div>
-                    <p>Choose your favorite design and order your t-shirt
-                        <br><br>Please tell your friends about this awesome website.
-                    </p>
-                    <div class="main-button">
-                        <a routerLink="/products">Shop Now!</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+  <div class="Accordion" cListGroup>
+    <a *ngFor="let category of categories" [routerLink] cListGroupItem>{{category.name}}</a>
+  </div>
+  <div class="banner">
+    <c-carousel>
+      <!-- <c-carousel-indicators></c-carousel-indicators> -->
+      <c-carousel-inner>
+        <c-carousel-item *ngFor="let slide of slides">
+          <img
+            [src]="slide.src"
+            alt="{{ slide.title }}"
+            class="d-block w-100 carouselImg"
+            loading="lazy" />
+        </c-carousel-item>
+      </c-carousel-inner>
+      <c-carousel-control [routerLink] caption="Previous" direction="prev"></c-carousel-control>
+      <c-carousel-control [routerLink] caption="Next" direction="next"></c-carousel-control>
+    </c-carousel>
+  </div>
+  <c-card class="cCard">
+    <img cCardImg="top" src="../../assets/images/big-01.jpg">
+    <c-card-body>
+      <p cCardText>
+        Some quick example <strong>text</strong> to build on the card title and make up the bulk of the card's content.
+      </p>
+    </c-card-body>
+  </c-card>
 </div>
 
 

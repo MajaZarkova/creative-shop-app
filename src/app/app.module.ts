@@ -14,10 +14,10 @@ import { ProductsService } from './core/services/products.service';
 import { UserService } from './core/services/user.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ErrorComponent } from './error/error.component';
-// import { SharedModule } from './shared/shared.module';
+import { SharedModule } from './shared/shared.module';
 
 import { AlertModule } from '@coreui/angular';
-import { AccordionModule, SharedModule, ButtonModule } from '@coreui/angular';
+import { ListGroupModule, CardModule, CarouselModule } from '@coreui/angular';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
@@ -56,8 +56,9 @@ const firebaseConfig = {
     AngularFireStorageModule,
     AngularFireAuthModule,
     AlertModule,
-    AccordionModule,
-    ButtonModule,
+    ListGroupModule,
+    CardModule, 
+    CarouselModule
   ],
   providers: [
     ProductsService,
