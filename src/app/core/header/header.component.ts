@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/core/services/user.service';
+import { IconSetService } from '@coreui/icons-angular';
+import { cilMenu, cilSearch} from '@coreui/icons';
 
 @Component({
   selector: 'app-header',
@@ -8,6 +10,7 @@ import { UserService } from 'src/app/core/services/user.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  icons = { cilMenu, cilSearch };
 
   get isLogged(): boolean {
     return this.userService.isLogged;
@@ -17,7 +20,9 @@ export class HeaderComponent {
     return this.userService.user?.firstName || '';
   }
 
-  constructor(private router: Router, private userService: UserService) { }
+  constructor(private router: Router, private userService: UserService, public iconSet: IconSetService) {
+    iconSet.icons = { cilMenu, cilSearch }
+  }
 
   logout(): void {
     // this.userService.logout().subscribe(() => {

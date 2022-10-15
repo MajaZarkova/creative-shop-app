@@ -24,6 +24,7 @@
     "@coreui/angular": "^4.2.6",
     "@coreui/coreui": "^4.2.2",
     "@coreui/coreui-pro": "^4.3.4",
+    "@coreui/icons": "^2.1.0",
     "@coreui/icons-angular": "^4.2.4",
     "bootstrap": "^5.2.2",
     "firebase": "^9.8.2",

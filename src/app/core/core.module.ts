@@ -12,7 +12,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { NavModule, HeaderModule, GridModule, DropdownModule } from '@coreui/angular';
+import { IconModule, IconSetService } from '@coreui/icons-angular';
 
 
 @NgModule({
@@ -29,14 +30,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatSidenavModule,
     MatToolbarModule,
     FlexLayoutModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NavModule,
+    HeaderModule,
+    GridModule,
+    DropdownModule,
+    IconModule
   ],
   exports: [
     HeaderComponent,
     FooterComponent
   ],
   providers: [
-    errorInterceptor
+    errorInterceptor,
+    IconSetService
   ]
 })
 export class CoreModule { }

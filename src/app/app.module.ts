@@ -17,7 +17,12 @@ import { ErrorComponent } from './error/error.component';
 import { SharedModule } from './shared/shared.module';
 
 import { AlertModule } from '@coreui/angular';
-import { ListGroupModule, CardModule, CarouselModule } from '@coreui/angular';
+import { ListGroupModule, 
+         CardModule, 
+         CarouselModule,
+         NavModule } from '@coreui/angular';
+
+import { IconModule, IconSetService } from '@coreui/icons-angular';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
@@ -58,11 +63,14 @@ const firebaseConfig = {
     AlertModule,
     ListGroupModule,
     CardModule, 
-    CarouselModule
+    CarouselModule,
+    NavModule,
+    IconModule
   ],
   providers: [
     ProductsService,
     UserService,
+    IconSetService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

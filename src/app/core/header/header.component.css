@@ -23,7 +23,7 @@ a {
     /* padding: 0.5rem 1rem; */
     /* padding-left: 25%;
     padding-right: 25%; */
-	height: 57px;
+	/* height: 57px; */
 }
 
 .navbar .navbar-brand {
@@ -75,6 +75,32 @@ a {
 	color: #3a8bcd;
 	max-height: fit-content;
 }
+
+.myDropdown {
+	display: none;
+}
+
+@media only screen and (max-device-width: 480px) {
+	.navbar-nav {
+		display: none;
+	}
+
+	.myDropdown {
+		display: block;
+	}
+}
+
+/* @media (min-width: 768px) {
+	c-dropdown {
+		display: none;
+	}
+} */
+
+/* @media (max-width: 600px) {
+	c-dropdown {
+		display: none;
+	}
+} */
 
 /* newly added */
 
