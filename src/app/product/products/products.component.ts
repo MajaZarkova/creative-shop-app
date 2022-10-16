@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SearchDataService } from 'src/app/core/services/search-data.service';
 import { IProduct } from 'src/app/shared/interfaces/product';
 import { ProductsService } from '../../core/services/products.service';
 
@@ -12,9 +13,11 @@ export class ProductsComponent {
 
   products: IProduct[] | undefined;
   allProducts: IProduct[] | undefined;
-  search = '';
 
-  constructor(private router: Router, private productsService: ProductsService) {
+  constructor(private router: Router, 
+              private productsService: ProductsService, 
+              private route: ActivatedRoute,
+              public searchService: SearchDataService) {
     this.fetchProducts();
   }
 

@@ -105,7 +105,8 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <span>Choose a unique design for your clothes!</span>
+          <input (change)="redirect(searchInput.value)" type="search" #searchInput id="searchInput" (ngModel)="search" placeholder="Search...">
+          <!-- <span>Choose a unique design for your clothes!</span> -->
         </div>
       </div>
     </div>

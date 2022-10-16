@@ -2,18 +2,6 @@
 	margin-top: 80px;
 	margin-bottom: 40px;
 }
-.featured-page input {
-	width: 50%;
-	height: 40px;
-	border: 1px solid #1e1e1e;
-	border-radius: 5px;
-	margin-left: 25%;
-	margin-bottom: 20px;
-	background-color: transparent;
-	padding-left: 15px;
-	color: black;
-	outline: none;
-}
 .featured-page .section-heading {
 	margin-top: 0px;
 	margin-bottom: 0px;

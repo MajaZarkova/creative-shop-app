@@ -1,7 +1,7 @@
 <div class="featured-page">
     <div class="container">
         <div>
-            <input type="search" [(ngModel)]="search" placeholder="Search...">
+            <!-- <input type="search" [(ngModel)]="search" placeholder="Search..."> -->
         </div>
         <div class="row">
             <div class="col-md-4 col-sm-12">
@@ -25,7 +25,7 @@
 <div class="featured container no-gutter">
 
     <div class="row posts" *ngIf="products">
-        <div *ngFor="let product of (products | filter:search) as item" id="{{product._id}}" class="item new col-md-4">
+        <div *ngFor="let product of (products | filter:searchService.getFilter()) as item" id="{{product._id}}" class="item new col-md-4">
             <a routerLink="/products/{{product._id}}">
                 <div class="featured-item">
                     <img src="{{product.image}}" alt="">
@@ -34,7 +34,7 @@
                 </div>
             </a>
         </div>
-        <div *ngIf="(products | filter:search).length < 1">
+        <div *ngIf="(products | filter:searchService.getFilter()).length < 1">
             <h4>Not Found</h4>
         </div>
     </div>

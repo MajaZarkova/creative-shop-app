@@ -8,6 +8,7 @@ import { CreateProductComponent } from './create-product/create-product.componen
 import { FormsModule } from '@angular/forms';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { UserService } from '../core/services/user.service';
+import { SearchDataService } from '../core/services/search-data.service'
 import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
 import { RemoveConfirmationComponent } from './remove-confirmation/remove-confirmation.component';
 import { SharedModule } from '../shared/shared.module';
@@ -32,7 +33,8 @@ import { SharedModule } from '../shared/shared.module';
   providers: [
     ProductRoutingModule,
     ProductsService,
-    UserService
+    UserService,
+    SearchDataService
   ]
 })
 export class ProductModule { }
