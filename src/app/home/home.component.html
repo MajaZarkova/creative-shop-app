@@ -1,6 +1,6 @@
 <div class="home-container">
   <div class="Accordion" cListGroup>
-    <a *ngFor="let category of categories" [routerLink] cListGroupItem>{{category.name}}</a>
+    <a *ngFor="let category of categories" [routerLink] cListGroupItem>{{category._id}}</a>
   </div>
   <div class="banner">
     <c-carousel>
@@ -45,6 +45,10 @@
                             <img src="{{product.image}}" alt="Item 1">
                             <h4>{{product.productName | titlecase}}</h4>
                             <h6>${{product.price}}</h6>
+                            <span *ngIf="product!.quantity == 0">Out of stock</span>
+                            <span *ngIf="product!.quantity > 0">In stock</span>
+                            <h5 class="free-shipping">FREE SHIPPING</h5>
+                            <input type="submit" class="button" value="BUY!">
                         </div>
                     </a>
                 </div>

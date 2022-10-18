@@ -1,5 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +13,7 @@ import { UserModule } from './user/user.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsService } from './core/services/products.service';
 import { UserService } from './core/services/user.service';
+import { CategoriesService } from './core/services/categories.service'
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ErrorComponent } from './error/error.component';
 import { SharedModule } from './shared/shared.module';
@@ -20,6 +22,7 @@ import { AlertModule } from '@coreui/angular';
 import { ListGroupModule, 
          CardModule, 
          CarouselModule,
+         DropdownModule,
          NavModule } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
@@ -49,6 +52,7 @@ const firebaseConfig = {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     RouterModule,
     HttpClientModule,
     CoreModule,
@@ -65,12 +69,14 @@ const firebaseConfig = {
     CardModule, 
     CarouselModule,
     NavModule,
-    IconModule
+    IconModule,
+    DropdownModule
   ],
   providers: [
     ProductsService,
     UserService,
-    IconSetService
+    IconSetService,
+    CategoriesService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

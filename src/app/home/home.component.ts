@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductsService } from '../core/services/products.service';
+import { CategoriesService } from '../core/services/categories.service'
 import { IProduct } from '../shared/interfaces/product';
+import { ICategory } from '../shared/interfaces/category';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +13,7 @@ import { IProduct } from '../shared/interfaces/product';
 export class HomeComponent {
 
   recentProducts: IProduct[] | undefined;
+  categories: ICategory[] | undefined;
   slides = [
     {
       id: "-1",
@@ -38,29 +41,18 @@ export class HomeComponent {
     },
   ];
 
-  categories = [
-    {name: "Men’s Clothing"},
-    {name: "Women’s Clothing"},
-    {name: "Phones and accessories"},
-    {name: "Jewelry and Watches"},
-    {name: "Computer and Office"},
-    {name: "Bags and Shoes"},
-    {name: "Health, Beauty and Hair"},
-    {name: "Sports and Outdoors"},
-    {name: "Home, Garden and Furniture"},
-    {name: "Home Improvement"},
-    {name: "Automobiles and Motorcycles"},
-    {name: "Toys, Kids and Babies"},
-    {name: "Consumer Electronics"},
-    ];
-
-  constructor(private router: Router, private productsService: ProductsService) { 
+  constructor(private router: Router, private productsService: ProductsService, private categoriesService: CategoriesService) { 
+    this.fetchCategories()
     this.fetchRecentProducts()
   }
 
   fetchRecentProducts(): void {
     this.recentProducts = undefined;
     this.productsService.loadRecentProducts(5).subscribe(products => this.recentProducts = products);
+  }
+
+  fetchCategories(): void {
+    this.categoriesService.loadCategories().subscribe(categories => this.categories = categories)
   }
 
 }

@@ -1,11 +1,38 @@
+h4 {
+	color: #1e1e1e;
+	text-align: center;
+}
+
+.free-shipping {
+	color: tomato;
+    text-align: center;
+    margin-top: inherit;
+    font-size: large;
+}
+
+.Accordion {
+	width: 20%;
+	margin-right: 2%;
+	margin-left: 2%;
+}
+
+.products-container {
+	display: flex;
+    padding-left: 5%;
+    padding-right: 5%;
+	margin-top: 5%;
+}
+
 .featured-page {
 	margin-top: 80px;
 	margin-bottom: 40px;
 }
+
 .featured-page .section-heading {
 	margin-top: 0px;
 	margin-bottom: 0px;
 }
+
 .featured-page #filters {
 	margin-top: 15px;
 	text-align: right;
