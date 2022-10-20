@@ -16,6 +16,15 @@ h4 {
 	margin-left: 2%;
 }
 
+.category {
+	cursor: pointer;
+}
+
+.category:focus {
+	background-color: #3a8bcd;
+	color: white;
+}
+
 .products-container {
 	display: flex;
     padding-left: 5%;
@@ -37,15 +46,15 @@ h4 {
 	margin-top: 15px;
 	text-align: right;
 }
-.featured .featured-item {
+.products-container .featured-item {
 	margin-bottom: 30px;
 	text-decoration: none;
 }
-.featured .featured-item h4 {
+.products-container .featured-item h4 {
 	transition: all 0.5s;
 	color: #1e1e1e;
 }
-.featured .featured-item:hover h4 {
+.products-container .featured-item:hover h4 {
 	color: #3a8bcd;
 }
 #filter button {

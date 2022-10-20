@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoriesService } from 'src/app/core/services/categories.service';
 import { SearchDataService } from 'src/app/core/services/search-data.service';
@@ -16,6 +16,7 @@ export class ProductsComponent {
   products: IProduct[] | undefined;
   allProducts: IProduct[] | undefined;
   categories: ICategory[] | undefined;
+  categoryFilter: string = '';
 
   constructor(private router: Router, 
               private productsService: ProductsService, 
@@ -35,14 +36,20 @@ export class ProductsComponent {
     this.productsService.loadProducts().subscribe(products => {
       this.products = products;
       this.allProducts = products;
+      this.categoryFilter = this.searchService.getCategoryFilter()
+      this.filterProducts(this.categoryFilter);
+      this.searchService.setCategoryFilter('')
     });
   }
 
   filterProducts(value: string | '' | null): void {
     if (value == '' || null) {
       this.products = this.allProducts;
+      console.log('inside if')
     } else {
-      this.products = this.allProducts?.filter(x => x.category == value);
+      console.log(`Products: ${this.products}`)
+      this.products = this.allProducts?.filter(x => x.category === value);
+      console.log('inside else')
     }
   }
 

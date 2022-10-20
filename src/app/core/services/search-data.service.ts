@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class SearchDataService {
   searchValue: string = '';
+  categoryFilter: string = '';
 
   constructor() { }
 
@@ -14,5 +15,13 @@ export class SearchDataService {
 
   public setFilter(filter: string): void {
     this.searchValue = filter;
+  }
+
+  public getCategoryFilter(): string {
+    return this.categoryFilter;
+  }
+
+  public setCategoryFilter(filter: string): void {
+    this.categoryFilter = filter;
   }
 }

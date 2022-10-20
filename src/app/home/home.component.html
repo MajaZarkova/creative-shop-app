@@ -1,6 +1,6 @@
 <div class="home-container">
   <div class="Accordion" cListGroup>
-    <a *ngFor="let category of categories" [routerLink] cListGroupItem>{{category._id}}</a>
+    <button #categoryButton *ngFor="let category of categories" (click)="filterCategory(categoryButton.textContent!)" cListGroupItem>{{category._id}}</button>
   </div>
   <div class="banner">
     <c-carousel>

@@ -4,6 +4,7 @@ import { ProductsService } from '../core/services/products.service';
 import { CategoriesService } from '../core/services/categories.service'
 import { IProduct } from '../shared/interfaces/product';
 import { ICategory } from '../shared/interfaces/category';
+import { SearchDataService } from '../core/services/search-data.service';
 
 @Component({
   selector: 'app-home',
@@ -41,7 +42,10 @@ export class HomeComponent {
     },
   ];
 
-  constructor(private router: Router, private productsService: ProductsService, private categoriesService: CategoriesService) { 
+  constructor(private router: Router, 
+              private productsService: ProductsService, 
+              private categoriesService: CategoriesService, 
+              private searchService: SearchDataService) { 
     this.fetchCategories()
     this.fetchRecentProducts()
   }
@@ -55,4 +59,8 @@ export class HomeComponent {
     this.categoriesService.loadCategories().subscribe(categories => this.categories = categories)
   }
 
+  filterCategory(categoryFilter: string): void {
+    this.searchService.setCategoryFilter(categoryFilter);
+    this.router.navigate(['/products']);
+  }
 }

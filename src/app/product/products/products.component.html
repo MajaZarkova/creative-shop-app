@@ -26,7 +26,8 @@
 
 <div class="products-container">
     <div class="Accordion" cListGroup>
-        <a *ngFor="let category of categories" [routerLink] cListGroupItem>{{category._id}}</a>
+        <button #categoryButton class="category" (click)="filterProducts('')" cListGroupItem>All Products</button>
+        <button #categoryButton class="category" *ngFor="let category of categories" (click)="filterProducts(categoryButton.textContent)" cListGroupItem>{{category._id}}</button>
     </div>
     <div class="row posts" *ngIf="products">
         <div *ngFor="let product of (products | filter:searchService.getFilter()) as item" id="{{product._id}}" class="item new col-md-4">
