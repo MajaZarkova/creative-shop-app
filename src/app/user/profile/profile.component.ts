@@ -14,14 +14,14 @@ export class ProfileComponent {
     return this.userService.user;
   } 
 
-  isLoading = true;
+  isLoading = false;
 
   productsListed: IProduct[] | undefined = undefined;
 
   constructor(private userService: UserService, private productsService: ProductsService) {
-    this.userService.getUserProfile().subscribe(() => {
-      this.isLoading = false;
-    })
+    // this.userService.getUserProfile().subscribe(() => {
+    //   this.isLoading = false;
+    // })
     this.fetchUserProducts();
   }
 

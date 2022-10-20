@@ -13,11 +13,11 @@
               <a class="nav-link" routerLink="/products" cNavLink>Products</a>
             </li>
           </c-nav-item>
-          <c-nav-item>
+          <!-- <c-nav-item>
             <li routerLinkActive="active" class="nav-item">
               <a class="nav-link" routerLink="/about" cNavLink>About</a>
             </li>
-          </c-nav-item>
+          </c-nav-item> -->
           <c-nav-item>
             <c-header-divider></c-header-divider>
           </c-nav-item>
@@ -36,11 +36,11 @@
           </ng-container>
 
           <ng-container *ngIf="isLogged">
-            <c-nav-item>
+            <!-- <c-nav-item>
               <li routerLinkActive="active" class="nav-item">
                 <a class="nav-link" routerLink="/create" cNavLink>Create</a>
               </li>
-            </c-nav-item>
+            </c-nav-item> -->
             <c-nav-item>
               <li class="nav-item" (click)="logout()">
                 <a class="nav-link" routerLink="" cNavLink>logout</a>
@@ -68,9 +68,9 @@
             <li routerLinkActive="active" class="nav-item">
               <a class="nav-link" routerLink="/products" cDropdownItem>Products</a>
             </li>
-            <li routerLinkActive="active" class="nav-item">
+            <!-- <li routerLinkActive="active" class="nav-item">
               <a class="nav-link" routerLink="/about" cDropdownItem>About</a>
-            </li>
+            </li> -->
             <li>
               <hr cDropdownDivider>
             </li>
@@ -85,9 +85,9 @@
             </ng-container>
 
             <ng-container *ngIf="isLogged">
-              <li routerLinkActive="active" class="nav-item">
+              <!-- <li routerLinkActive="active" class="nav-item">
                 <a class="nav-link" routerLink="/create" cDropdownItem>Create</a>
-              </li>
+              </li> -->
               <li class="nav-item" (click)="logout()">
                 <a class="nav-link" routerLink="" cDropdownItem>logout</a>
               </li>

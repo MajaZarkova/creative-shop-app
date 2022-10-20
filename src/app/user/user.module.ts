@@ -9,6 +9,7 @@ import { UserService } from '../core/services/user.service';
 import { PasswordCheckDirective } from './password-check.directive';
 import { ProfileComponent } from './profile/profile.component';
 import { ProductsService } from '../core/services/products.service';
+import { SharedModule } from '../shared/shared.module'
 
 
 
@@ -21,13 +22,15 @@ import { ProductsService } from '../core/services/products.service';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     UserRoutingModule,
     RouterModule,
     FormsModule
   ],
   providers: [
     UserService,
-    ProductsService
+    ProductsService,
+    UserRoutingModule
   ]
 })
 export class UserModule { }

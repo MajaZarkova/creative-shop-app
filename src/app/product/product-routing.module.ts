@@ -23,26 +23,26 @@ const routes: Routes = [
       },
     ]
   },
-  {
-    path: 'create',
-    component: CreateProductComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'edit/:productId',
-    component: EditProductComponent,
-    canActivate: [AuthGuard]
-  },
+  // {
+  //   path: 'create',
+  //   component: CreateProductComponent,
+  //   canActivate: [AuthGuard]
+  // },
+  // {
+  //   path: 'edit/:productId',
+  //   component: EditProductComponent,
+  //   canActivate: [AuthGuard]
+  // },
   {
     path: 'order-confirmation',
     component: OrderConfirmationComponent,
     canActivate: [AuthGuard]
-  },
-  {
-    path: 'remove-confirmation',
-    component: RemoveConfirmationComponent,
-    canActivate: [AuthGuard]
   }
+  // {
+  //   path: 'remove-confirmation',
+  //   component: RemoveConfirmationComponent,
+  //   canActivate: [AuthGuard]
+  // }
 ];
 
 @NgModule({
