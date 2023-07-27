@@ -15,10 +15,10 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent
   },
-  // {
-  //   path: 'about',
-  //   component: AboutComponent
-  // },
+  {
+    path: 'about',
+    component: AboutComponent
+  },
   {
     path: 'error',
     component: ErrorComponent

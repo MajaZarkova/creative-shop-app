@@ -13,11 +13,11 @@
               <a class="nav-link" routerLink="/products" cNavLink>Products</a>
             </li>
           </c-nav-item>
-          <!-- <c-nav-item>
+          <c-nav-item>
             <li routerLinkActive="active" class="nav-item">
               <a class="nav-link" routerLink="/about" cNavLink>About</a>
             </li>
-          </c-nav-item> -->
+          </c-nav-item>
           <c-nav-item>
             <c-header-divider></c-header-divider>
           </c-nav-item>
@@ -36,11 +36,11 @@
           </ng-container>
 
           <ng-container *ngIf="isLogged">
-            <!-- <c-nav-item>
+            <c-nav-item>
               <li routerLinkActive="active" class="nav-item">
                 <a class="nav-link" routerLink="/create" cNavLink>Create</a>
               </li>
-            </c-nav-item> -->
+            </c-nav-item>
             <c-nav-item>
               <li class="nav-item" (click)="logout()">
                 <a class="nav-link" routerLink="" cNavLink>logout</a>
